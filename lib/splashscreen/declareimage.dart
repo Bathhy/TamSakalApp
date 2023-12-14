@@ -1,0 +1,1 @@
+const Image_GS = 'assets/images/GS.jpg';
