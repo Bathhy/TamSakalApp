@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
+import 'package:practiceloginlayout/singup/sign_up.dart';
 import 'package:practiceloginlayout/splashscreen/splashscree.dart';
 
 void main() {
@@ -26,8 +27,8 @@ class _MyWidgetState extends State<MyWidget> {
       routes: {
         '/splash': (context) => const Splashscreen(),
         '/login': (context) => const Loginpage(),
+        '/signup': (context) => const Signupscreen(),
       },
-      // home: const Loginpage(),
     );
   }
 }
