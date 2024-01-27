@@ -13,11 +13,13 @@ class _SignupscreenState extends State<Signupscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: myBlueColor,
       appBar: AppBar(
+        backgroundColor: myBlueColor,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back_ios),
-          color: Colors.purple,
+          color: Colors.white,
         ),
       ),
       body: SingleChildScrollView(
@@ -148,7 +150,7 @@ class _SignupscreenState extends State<Signupscreen> {
                         child: ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: myBlueColor,
+                            backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                             ),
@@ -158,7 +160,7 @@ class _SignupscreenState extends State<Signupscreen> {
                             "Sign Up",
                             style: TextStyle(
                                 fontSize: 20,
-                                color: Colors.white,
+                                color: myBlueColor,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -196,7 +198,7 @@ class _SignupscreenState extends State<Signupscreen> {
           ElevatedButton.icon(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: myBlueColor,
+              backgroundColor: Colors.white,
               disabledBackgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
@@ -222,7 +224,7 @@ class _SignupscreenState extends State<Signupscreen> {
           ElevatedButton.icon(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: myBlueColor,
+              backgroundColor: Colors.white,
               disabledBackgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
@@ -248,7 +250,7 @@ class _SignupscreenState extends State<Signupscreen> {
           ElevatedButton.icon(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: myBlueColor,
+              backgroundColor: Colors.white,
               disabledBackgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),

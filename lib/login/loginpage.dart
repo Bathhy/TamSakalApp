@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/singup/sign_up.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
@@ -15,7 +16,9 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: myBlueColor,
       appBar: AppBar(
+        backgroundColor: myBlueColor,
         title: const Text(""),
       ),
       body: SingleChildScrollView(
@@ -114,9 +117,11 @@ class _LoginpageState extends State<Loginpage> {
                       SizedBox(
                         width: 350,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => Homescreen());
+                          },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: myBlueColor,
+                            backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0),
                             ),
@@ -126,7 +131,7 @@ class _LoginpageState extends State<Loginpage> {
                             "Sign In",
                             style: TextStyle(
                               fontSize: 20,
-                              color: Colors.white,
+                              color: myBlueColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -186,7 +191,7 @@ class _LoginpageState extends State<Loginpage> {
           ElevatedButton.icon(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: myBlueColor,
+              backgroundColor: Colors.white,
               disabledBackgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(9),
@@ -212,7 +217,7 @@ class _LoginpageState extends State<Loginpage> {
           ElevatedButton.icon(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: myBlueColor,
+              backgroundColor: Colors.white,
               disabledBackgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(9),
@@ -238,7 +243,7 @@ class _LoginpageState extends State<Loginpage> {
           ElevatedButton.icon(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: myBlueColor,
+              backgroundColor: Colors.white,
               disabledBackgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(9),
