@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
-import 'package:practiceloginlayout/singup/sign_up.dart';
-import 'package:practiceloginlayout/splashscreen/splashscree.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyWidget());
@@ -17,18 +16,13 @@ class MyWidget extends StatefulWidget {
 class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/splash',
-      routes: {
-        '/splash': (context) => const Splashscreen(),
-        '/login': (context) => const Loginpage(),
-        '/signup': (context) => const Signupscreen(),
-      },
+      home: Loginpage(),
     );
   }
 }

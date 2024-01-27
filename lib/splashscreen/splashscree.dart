@@ -1,10 +1,11 @@
 import 'dart:async';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class Splashscreen extends StatefulWidget {
-  const Splashscreen({super.key});
+  Splashscreen({super.key});
 
   @override
   State<Splashscreen> createState() => _SplashscreenState();
@@ -15,7 +16,7 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2),
-        () => Navigator.pushReplacementNamed(context, '/login'));
+        () => Get.to(Loginpage()));
   }
 
   @override
@@ -27,7 +28,7 @@ class _SplashscreenState extends State<Splashscreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              Image_GS,
+              imageGS,
               width: 200,
             ),
             const SizedBox(height: 20),
