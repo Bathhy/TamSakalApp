@@ -118,7 +118,7 @@ class _LoginpageState extends State<Loginpage> {
                         width: 350,
                         child: ElevatedButton(
                           onPressed: () {
-                            Get.to(() => Homescreen());
+                            Get.off(() => Homescreen());
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
@@ -149,7 +149,7 @@ class _LoginpageState extends State<Loginpage> {
                 children: [
                   Text(
                     "--Or Sign in with--",
-                    style: TextStyle(color: Colors.black45, fontSize: 14),
+                    style: TextStyle(color: Colors.white, fontSize: 14),
                   ),
                 ],
               ),
@@ -160,14 +160,14 @@ class _LoginpageState extends State<Loginpage> {
               children: [
                 const Text(
                   "Don't have an account?",
-                  style: TextStyle(fontSize: 14, color: Colors.black45),
+                  style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
                 TextButton(
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(
                         fontSize: 14,
-                        color: myBlueColor,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
