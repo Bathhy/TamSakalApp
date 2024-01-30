@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
+import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
+import 'package:get/get.dart';
 
 class Signupscreen extends StatefulWidget {
   Signupscreen({super.key});
@@ -10,6 +12,7 @@ class Signupscreen extends StatefulWidget {
 }
 
 class _SignupscreenState extends State<Signupscreen> {
+  final AuthController authController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,13 +101,26 @@ class _SignupscreenState extends State<Signupscreen> {
                             ),
                           ],
                         ),
-                        child: const TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: 'Password',
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 15.0, horizontal: 20.0),
-                            border: InputBorder.none,
+                        child: Obx(
+                          () => TextField(
+                            obscureText: authController.passhidden.value,
+                            decoration: InputDecoration(
+                              hintText: 'Password',
+                              suffixIcon: InkWell(
+                                child: Icon(
+                                  authController.passhidden.value
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.grey,
+                                ),
+                                onTap: () {
+                                  authController.hideSlogin();
+                                },
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 15.0, horizontal: 20.0),
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),
@@ -128,13 +144,26 @@ class _SignupscreenState extends State<Signupscreen> {
                             ),
                           ],
                         ),
-                        child: const TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: 'Confirm Password',
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 15.0, horizontal: 20.0),
-                            border: InputBorder.none,
+                        child: Obx(
+                          () => TextField(
+                            obscureText: authController.cpasshidden.value,
+                            decoration: InputDecoration(
+                              hintText: 'Confirm Password',
+                              suffixIcon: InkWell(
+                                child: Icon(
+                                  authController.cpasshidden.value
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.grey,
+                                ),
+                                onTap: () {
+                                  authController.hidecslogin();
+                                },
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 15.0, horizontal: 20.0),
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),

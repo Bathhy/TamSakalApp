@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
+import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/singup/sign_up.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
@@ -13,6 +14,7 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
+  final AuthController _authController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +47,7 @@ class _LoginpageState extends State<Loginpage> {
                   const Text(
                     "Login to your Account",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -68,8 +70,8 @@ class _LoginpageState extends State<Loginpage> {
                             ),
                           ],
                         ),
-                        child: const TextField(
-                          obscureText: false,
+                        child: TextFormField(
+                          obscureText: _authController.lpasshidden.value,
                           decoration: InputDecoration(
                             hintText: 'Email',
                             contentPadding: EdgeInsets.symmetric(
@@ -98,13 +100,26 @@ class _LoginpageState extends State<Loginpage> {
                             ),
                           ],
                         ),
-                        child: const TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: 'Password',
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 15.0, horizontal: 20.0),
-                            border: InputBorder.none,
+                        child: Obx(
+                          () => TextFormField(
+                            obscureText: _authController.lpasshidden.value,
+                            decoration: InputDecoration(
+                              hintText: 'Password',
+                              suffixIcon: InkWell(
+                                child: Icon(
+                                  _authController.lpasshidden.value
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.grey,
+                                ),
+                                onTap: () {
+                                  _authController.hideLogin();
+                                },
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 15.0, horizontal: 20.0),
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),
