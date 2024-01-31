@@ -16,14 +16,34 @@ class _HomescreenState extends State<Homescreen> {
       appBar: _buildAppbar(),
       body: Column(
         children: [
-          TextField(
-            decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 2, color: Colors.black)),
-                labelText: 'Search',
-                suffixIcon: Icon(Icons.search)),
-          )
+          SizedBox(
+            height: 20,
+          ),
+          _searchInput()
         ],
+      ),
+    );
+  }
+
+  Widget _searchInput() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        width: MediaQuery.of(context).size.width / 1.1,
+        height: MediaQuery.of(context).size.height / 14,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40), color: Colors.grey),
+        child: Row(
+          children: [
+            Icon(Icons.search),
+            SizedBox(width: 20),
+            Text(
+              'Search',
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
+            )
+          ],
+        ),
       ),
     );
   }
