@@ -19,7 +19,8 @@ class _HomescreenState extends State<Homescreen> {
           SizedBox(
             height: 20,
           ),
-          _searchInput()
+          _searchInput(),
+          Expanded(child: PageViewMeth()),
         ],
       ),
     );
@@ -41,7 +42,7 @@ class _HomescreenState extends State<Homescreen> {
             Text(
               'Search',
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
-            )
+            ),
           ],
         ),
       ),
@@ -61,6 +62,35 @@ class _HomescreenState extends State<Homescreen> {
           icon: const Icon(
             Icons.person_pin,
             color: Colors.white,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class PageViewMeth extends StatelessWidget {
+  const PageViewMeth({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      scrollDirection: Axis.horizontal,
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          color: Colors.red,
+          child: Center(
+            child: Text("PageView 1"),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          color: Colors.green,
+          child: Center(
+            child: Text("PageView 2"),
           ),
         ),
       ],
