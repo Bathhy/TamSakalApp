@@ -1,99 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:practiceloginlayout/RepoUni/repo_uni.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
+import 'package:practiceloginlayout/controller/page_control.dart';
+import 'package:practiceloginlayout/splashscreen/declareimage.dart';
+import 'package:get/get.dart';
 
 class Homescreen extends StatefulWidget {
-  const Homescreen({super.key});
+  Homescreen({super.key});
 
   @override
   State<Homescreen> createState() => _HomescreenState();
 }
 
 class _HomescreenState extends State<Homescreen> {
+  final PageviewController _pageview = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: _buildAppbar(),
-      body: Column(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "University Pedia",
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+        backgroundColor: Color.fromARGB(255, 4, 6, 168),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.share,
+                color: Colors.white,
+              ))
+        ],
+      ),
+      body: ListView(
         children: [
+          SizedBox(
+            height: Get.height * 0.60,
+            child: PageView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Container(
+                  color: Colors.red,
+                );
+              },
+            ),
+          ),
           SizedBox(
             height: 20,
           ),
-          _searchInput(),
-          Expanded(child: PageViewMeth()),
+          Text(
+            "University Pedia is a website for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+          ),
         ],
       ),
-    );
-  }
-
-  Widget _searchInput() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        width: MediaQuery.of(context).size.width / 1.1,
-        height: MediaQuery.of(context).size.height / 14,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(40), color: Colors.grey),
-        child: Row(
-          children: [
-            Icon(Icons.search),
-            SizedBox(width: 20),
-            Text(
-              'Search',
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  AppBar _buildAppbar() {
-    return AppBar(
-      backgroundColor: myBlueColor,
-      title: const Text(
-        "University Pedia",
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.person_pin,
-            color: Colors.white,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class PageViewMeth extends StatelessWidget {
-  const PageViewMeth({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return PageView(
-      scrollDirection: Axis.horizontal,
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          color: Colors.red,
-          child: Center(
-            child: Text("PageView 1"),
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          color: Colors.green,
-          child: Center(
-            child: Text("PageView 2"),
-          ),
-        ),
-      ],
     );
   }
 }

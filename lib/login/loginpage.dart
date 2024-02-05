@@ -152,57 +152,55 @@ class _LoginpageState extends State<Loginpage> {
 
   Row _signinButton() {
     return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 350,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Get.off(() => Homescreen());
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(9.0),
-                          ),
-                          elevation: 15.0,
-                        ),
-                        child: const Text(
-                          "Sign In",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: myBlueColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                );
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 350,
+          child: ElevatedButton(
+            onPressed: () {
+              Get.off(() => Homescreen());
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(9.0),
+              ),
+              elevation: 15.0,
+            ),
+            child: const Text(
+              "Sign In",
+              style: TextStyle(
+                fontSize: 20,
+                color: myBlueColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Row _signupButton() {
     return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Don't have an account?",
-                style: TextStyle(fontSize: 14, color: Colors.white),
-              ),
-              TextButton(
-                child: const Text(
-                  "Sign Up",
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-                onPressed: () {
-                  Get.to(Signupscreen());
-                },
-              ),
-            ],
-          );
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Don't have an account?",
+          style: TextStyle(fontSize: 14, color: Colors.white),
+        ),
+        TextButton(
+          child: const Text(
+            "Sign Up",
+            style: TextStyle(
+                fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          onPressed: () {
+            Get.to(() => Signupscreen());
+          },
+        ),
+      ],
+    );
   }
 
   Container _signin_diffmethod() {

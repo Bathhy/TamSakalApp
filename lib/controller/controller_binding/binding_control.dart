@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/controller/login_controller.dart';
+import 'package:practiceloginlayout/controller/page_control.dart';
 
 class UniBingding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => AuthController());
+   Get.lazyPut(() => PageviewController());
   }
 }
