@@ -16,6 +16,12 @@ class _HomescreenState extends State<Homescreen> {
   final PageviewController _pageview = Get.find();
 
   @override
+  void initState() {
+    _pageview.getItemList();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -39,12 +45,16 @@ class _HomescreenState extends State<Homescreen> {
       body: ListView(
         children: [
           SizedBox(
-            height: Get.height * 0.60,
+            height: Get.height * 0.30,
             child: PageView.builder(
-              itemCount: 5,
+              itemCount: _pageview.allList.length,
               itemBuilder: (context, index) {
                 return Container(
-                  color: Colors.red,
+                  height: Get.height,
+                  decoration: BoxDecoration(
+                      color: Colors.amber,
+                      image: DecorationImage(
+                          image: AssetImage(_pageview.allList[index].imgUni))),
                 );
               },
             ),
