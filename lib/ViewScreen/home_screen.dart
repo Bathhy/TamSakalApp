@@ -44,25 +44,53 @@ class _HomescreenState extends State<Homescreen> {
       drawer: drawerMeth(),
       body: ListView(
         children: [
-          SizedBox(
-            height: Get.height * 0.30,
-            child: PageView.builder(
-              itemCount: _pageview.allList.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  height: Get.height,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(_pageview.allList[index].imgUni),
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                );
-              },
+          Card(
+            elevation: 4.0,
+            color: myBlueColor,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20))),
+            child: SizedBox(
+              height: 70,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Welcome back Joji",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: Get.height * 0.40,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: PageView.builder(
+                itemCount: _pageview.allList.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: Get.height,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(_pageview.allList[index].imgUni),
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
           Text(
             "University Pedia is a website for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",

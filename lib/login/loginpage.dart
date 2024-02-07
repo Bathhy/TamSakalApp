@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
+import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/singup/sign_up.dart';
@@ -158,7 +159,7 @@ class _LoginpageState extends State<Loginpage> {
           width: 350,
           child: ElevatedButton(
             onPressed: () {
-              Get.off(() => Homescreen());
+              Get.offAll(() => BottomNaviView());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
@@ -196,7 +197,7 @@ class _LoginpageState extends State<Loginpage> {
                 fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
           ),
           onPressed: () {
-            Get.to(() => Signupscreen());
+            // Get.to(() => BottomNaviView());
           },
         ),
       ],
