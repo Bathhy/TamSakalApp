@@ -18,7 +18,7 @@ class BottomNaviView extends StatelessWidget {
             _botcontroller.pageclick(index);
           },
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey,
+          unselectedItemColor: Colors.white,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
@@ -26,21 +26,28 @@ class BottomNaviView extends StatelessWidget {
                 Icons.home,
                 size: 30,
               ),
-              label: "",
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.favorite_rounded,
+                size: 30,
+              ),
+              label: "Favourite",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.search,
                 size: 30,
               ),
-              label: "",
+              label: "Search",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.person,
                 size: 30,
               ),
-              label: "",
+              label: "Account",
             ),
           ],
         ),
