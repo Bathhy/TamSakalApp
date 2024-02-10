@@ -6,7 +6,7 @@ import 'package:practiceloginlayout/controller/page_control.dart';
 class UniBingding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => AuthController());
-   Get.lazyPut(() => PageviewController());
-   Get.put(BottomNaviController());
+    Get.lazyPut(() => PageviewController());
+    Get.put(BottomNaviController());
   }
 }

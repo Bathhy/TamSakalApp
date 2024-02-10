@@ -52,7 +52,7 @@ class _SignupscreenState extends State<Signupscreen> {
                   const Text(
                     "Create Your Account",
                     style: TextStyle(
-                        color: Colors.black,
+                        color: myBlueColor,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),

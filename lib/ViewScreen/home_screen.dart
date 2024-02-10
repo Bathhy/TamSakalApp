@@ -14,10 +14,12 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
   final PageviewController _pageview = Get.find();
+  // final HomeController _homecontroller = Get.find();
 
   @override
   void initState() {
     _pageview.getItemList();
+    _pageview.getCategory();
     super.initState();
   }
 
@@ -91,9 +93,9 @@ class _HomescreenState extends State<Homescreen> {
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              childAspectRatio: 0.8,
+              childAspectRatio: 1.2,
             ),
-            itemCount: 3,
+            itemCount: _pageview.CategoryUniList.length,
             itemBuilder: (context, index) {
               return Container(
                 decoration: BoxDecoration(
@@ -110,7 +112,10 @@ class _HomescreenState extends State<Homescreen> {
                 ),
                 child: Stack(
                   children: [
-                    Image.asset(imageCode),
+                    Image.asset(
+                      _pageview.CategoryUniList[index].imgCateuni,
+                      fit: BoxFit.cover,
+                    ),
                   ],
                 ),
               );
@@ -153,7 +158,7 @@ class _HomescreenState extends State<Homescreen> {
                 image: DecorationImage(
                     image: AssetImage(Unilife), fit: BoxFit.fill)),
           ),
-          SizedBox(height: 80),
+          SizedBox(height: 10),
           ListTile(
             iconColor: Colors.white,
             leading: Icon(Icons.account_circle_outlined),

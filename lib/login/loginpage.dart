@@ -54,7 +54,7 @@ class _LoginpageState extends State<Loginpage> {
                   const Text(
                     "Login to your Account",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: myBlueColor,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -63,14 +63,15 @@ class _LoginpageState extends State<Loginpage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      textformNoIcon(),
+                      textformNoIcon(label: "Email"),
                     ],
                   ),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      textformfieldWithIcon(authController: _authController),
+                      textformfieldWithIcon(
+                          authController: _authController, label: "Password"),
                     ],
                   ),
                   const SizedBox(height: 30),
@@ -240,7 +241,3 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 }
-
-
-
-
