@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
 import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
+import 'package:practiceloginlayout/component_project/Text_compo.dart';
+import 'package:practiceloginlayout/component_project/textformfield_compo.dart';
 import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/singup/sign_up.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
@@ -19,10 +20,15 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: myBlueColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: myBlueColor,
-        title: const Text(""),
+        title: UniText(
+            label: "University Pedia",
+            color: Colors.white,
+            fontsize: 20,
+            fontweight: FontWeight.bold),
       ),
       body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -57,73 +63,14 @@ class _LoginpageState extends State<Loginpage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: TextFormField(
-                          obscureText: _authController.lpasshidden.value,
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 15.0, horizontal: 20.0),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
+                      textformNoIcon(),
                     ],
                   ),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Obx(
-                          () => TextFormField(
-                            obscureText: _authController.lpasshidden.value,
-                            decoration: InputDecoration(
-                              hintText: 'Password',
-                              suffixIcon: InkWell(
-                                child: Icon(
-                                  _authController.lpasshidden.value
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                  color: Colors.grey,
-                                ),
-                                onTap: () {
-                                  _authController.hideLogin();
-                                },
-                              ),
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 20),
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
+                      textformfieldWithIcon(authController: _authController),
                     ],
                   ),
                   const SizedBox(height: 30),
@@ -138,7 +85,7 @@ class _LoginpageState extends State<Loginpage> {
                 children: [
                   Text(
                     "--Or Sign in with--",
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    style: TextStyle(color: myBlueColor, fontSize: 14),
                   ),
                 ],
               ),
@@ -164,7 +111,7 @@ class _LoginpageState extends State<Loginpage> {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(9.0),
+                borderRadius: BorderRadius.circular(20),
               ),
               elevation: 15.0,
             ),
@@ -182,22 +129,22 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 
-  Row _signupButton() {
+  Widget _signupButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
           "Don't have an account?",
-          style: TextStyle(fontSize: 14, color: Colors.white),
+          style: TextStyle(fontSize: 14, color: myBlueColor),
         ),
         TextButton(
           child: const Text(
             "Sign Up",
             style: TextStyle(
-                fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
+                fontSize: 14, color: myBlueColor, fontWeight: FontWeight.bold),
           ),
           onPressed: () {
-            // Get.to(() => BottomNaviView());
+            Get.to(Signupscreen());
           },
         ),
       ],
@@ -293,3 +240,7 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 }
+
+
+
+

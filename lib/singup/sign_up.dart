@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
+import 'package:practiceloginlayout/component_project/Text_compo.dart';
+import 'package:practiceloginlayout/component_project/textformfield_compo.dart';
 import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 import 'package:get/get.dart';
@@ -16,7 +18,7 @@ class _SignupscreenState extends State<Signupscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: myBlueColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: myBlueColor,
         leading: IconButton(
@@ -24,6 +26,7 @@ class _SignupscreenState extends State<Signupscreen> {
           icon: const Icon(Icons.arrow_back_ios),
           color: Colors.white,
         ),
+        title: UniText(label: "Back", color: Colors.white),
       ),
       body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -57,116 +60,29 @@ class _SignupscreenState extends State<Signupscreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: const TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 15.0, horizontal: 20.0),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
+                      textformNoIcon(
+                        label: "Email",
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Obx(
-                          () => TextField(
-                            obscureText: authController.passhidden.value,
-                            decoration: InputDecoration(
-                              hintText: 'Password',
-                              suffixIcon: InkWell(
-                                child: Icon(
-                                  authController.passhidden.value
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                  color: Colors.grey,
-                                ),
-                                onTap: () {
-                                  authController.hideSlogin();
-                                },
-                              ),
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 15.0, horizontal: 20.0),
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
+                      textformfieldWithIcon(
+                        authController: authController,
+                        label: "Password",
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Obx(
-                          () => TextField(
-                            obscureText: authController.cpasshidden.value,
-                            decoration: InputDecoration(
-                              hintText: 'Confirm Password',
-                              suffixIcon: InkWell(
-                                child: Icon(
-                                  authController.cpasshidden.value
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                  color: Colors.grey,
-                                ),
-                                onTap: () {
-                                  authController.hidecslogin();
-                                },
-                              ),
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 15.0, horizontal: 20.0),
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
+                      textformfieldWithIcon(
+                        authController: authController,
+                        label: "Confirm Password",
+                      )
                     ],
                   ),
                   const SizedBox(height: 25),
@@ -181,7 +97,7 @@ class _SignupscreenState extends State<Signupscreen> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             elevation: 15.0,
                           ),
@@ -206,7 +122,7 @@ class _SignupscreenState extends State<Signupscreen> {
                 children: [
                   Text(
                     "--Or Sign in with--",
-                    style: TextStyle(color: Colors.black45, fontSize: 14),
+                    style: TextStyle(color: myBlueColor, fontSize: 14),
                   ),
                 ],
               ),

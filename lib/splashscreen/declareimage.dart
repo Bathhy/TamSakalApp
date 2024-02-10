@@ -5,3 +5,5 @@ const String imageIG = 'assets/images/IGlogo.jpg';
 const String imageRUPP = 'assets/images/rupo.jpg';
 const String imageMIT = 'assets/images/MIT.jpg';
 const String imageCADT = 'assets/images/cadt.jpg';
+const String imageCode = 'assets/images/codde.png';
+const String imageArch = 'assets/images/arch.png';

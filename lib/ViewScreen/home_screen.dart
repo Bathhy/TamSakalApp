@@ -3,6 +3,7 @@ import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/controller/page_control.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class Homescreen extends StatefulWidget {
   Homescreen({super.key});
@@ -94,7 +95,7 @@ class _HomescreenState extends State<Homescreen> {
               return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
+                  color: Colors.green,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
@@ -104,14 +105,10 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                   ],
                 ),
-                child: Center(
-                  child: Text(
-                    'Item $index',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                child: Stack(
+                  children: [
+                    Image.asset(imageCode),
+                  ],
                 ),
               );
             },
