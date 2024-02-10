@@ -7,3 +7,4 @@ const String imageMIT = 'assets/images/MIT.jpg';
 const String imageCADT = 'assets/images/cadt.jpg';
 const String imageCode = 'assets/images/codde.png';
 const String imageArch = 'assets/images/arch.png';
+const String Unilife = 'assets/images/unilife.jpg';

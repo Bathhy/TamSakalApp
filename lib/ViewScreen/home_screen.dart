@@ -74,7 +74,9 @@ class _HomescreenState extends State<Homescreen> {
           //     ),
           //   ),
           // ),
+          SizedBox(height: 15),
           _pageviewMeth(),
+          SizedBox(height: 15),
           UniText(
             label:
                 "University Pedia is a website for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",
@@ -82,6 +84,7 @@ class _HomescreenState extends State<Homescreen> {
             fontsize: 20,
             fontweight: FontWeight.bold,
           ),
+          SizedBox(height: 15),
           GridView.builder(
             shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -144,7 +147,13 @@ class _HomescreenState extends State<Homescreen> {
       backgroundColor: myBlueColor,
       child: ListView(
         children: [
-          SizedBox(height: 150),
+          DrawerHeader(
+            child: Text(""),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(Unilife), fit: BoxFit.fill)),
+          ),
+          SizedBox(height: 80),
           ListTile(
             iconColor: Colors.white,
             leading: Icon(Icons.account_circle_outlined),
