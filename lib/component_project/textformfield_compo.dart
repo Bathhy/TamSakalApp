@@ -38,13 +38,14 @@ class textformNoIcon extends StatelessWidget {
 }
 
 class textformfieldWithIcon extends StatelessWidget {
-   textformfieldWithIcon({
+  textformfieldWithIcon({
     super.key,
-    required AuthController authController, this.label,
+    required AuthController authController,
+    this.label,
   }) : _authController = authController;
 
   final AuthController _authController;
-final String? label;
+  final String? label;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -77,12 +78,38 @@ final String? label;
                 _authController.hideLogin();
               },
             ),
-            contentPadding: EdgeInsets.symmetric(
-                vertical: 15, horizontal: 20),
+            contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             border: InputBorder.none,
           ),
         ),
       ),
+    );
+  }
+}
+
+//Drawer Component
+// 
+
+class CompoDrawer extends StatelessWidget {
+  CompoDrawer({
+    super.key,
+    required this.label,
+    this.ontap,
+    this.LeadIcon,
+  });
+  final String label;
+  final VoidCallback? ontap;
+  final IconData? LeadIcon;
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      iconColor: Colors.white,
+      leading: Icon(LeadIcon),
+      title: Text(
+        label,
+        style: TextStyle(color: Colors.white),
+      ),
+      onTap: ontap,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
+import 'package:practiceloginlayout/component_project/textformfield_compo.dart';
 import 'package:practiceloginlayout/controller/page_control.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
@@ -36,12 +37,32 @@ class _HomescreenState extends State<Homescreen> {
         ),
         backgroundColor: Color.fromARGB(255, 4, 6, 168),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.notifications,
-                color: Colors.white,
-              ))
+          Stack(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.notifications,
+                  color: Colors.white,
+                ),
+              ),
+              Positioned(
+                top: 7,
+                left: 0,
+                bottom: 23,
+                child: CircleAvatar(
+                  radius: 31,
+                  backgroundColor: Colors.red,
+                  child: Center(
+                    child: UniText(
+                        label: "1",
+                        color: Colors.white,
+                        fontweight: FontWeight.bold),
+                  ),
+                ),
+              )
+            ],
+          )
         ],
         iconTheme: IconThemeData(color: Colors.white),
       ),
@@ -87,40 +108,70 @@ class _HomescreenState extends State<Homescreen> {
             fontweight: FontWeight.bold,
           ),
           SizedBox(height: 15),
-          GridView.builder(
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1.2,
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 19,
+                mainAxisSpacing: 10,
+                childAspectRatio: 0.9,
+              ),
+              itemCount: _pageview.CategoryUniList.length,
+              itemBuilder: (context, index) {
+                final cate = _pageview.CategoryUniList[index];
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color.fromARGB(255, 233, 233, 240),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    child: LayoutBuilder(
+                      builder: (context, constraint) {
+                        return Container(
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                cate.imgCateuni,
+                                fit: BoxFit.fill,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 160,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      cate.CateUniname,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                );
+              },
             ),
-            itemCount: _pageview.CategoryUniList.length,
-            itemBuilder: (context, index) {
-              return Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.green,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      _pageview.CategoryUniList[index].imgCateuni,
-                      fit: BoxFit.cover,
-                    ),
-                  ],
-                ),
-              );
-            },
-          )
+          ),
         ],
       ),
     );
@@ -159,54 +210,21 @@ class _HomescreenState extends State<Homescreen> {
                     image: AssetImage(Unilife), fit: BoxFit.fill)),
           ),
           SizedBox(height: 10),
-          ListTile(
-            iconColor: Colors.white,
-            leading: Icon(Icons.account_circle_outlined),
-            title: const Text(
-              'Profile',
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {},
+          CompoDrawer(label: "Profile", LeadIcon: Icons.person_2_rounded),
+          Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
+          CompoDrawer(
+            label: "Scholarship",
+            LeadIcon: Icons.sell_rounded,
           ),
           Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
-          ListTile(
-            iconColor: Colors.white,
-            leading: Icon(Icons.add_shopping_cart),
-            title: const Text(
-              'Orders',
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {},
+          CompoDrawer(
+            label: "Privacy Policy",
+            LeadIcon: Icons.sticky_note_2,
           ),
           Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
-          ListTile(
-            iconColor: Colors.white,
-            leading: Icon(Icons.sell_outlined),
-            title: const Text(
-              'Offer and Promo',
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {},
-          ),
-          Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
-          ListTile(
-            iconColor: Colors.white,
-            leading: Icon(Icons.sticky_note_2_outlined),
-            title: const Text(
-              'Privacy Policy',
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {},
-          ),
-          Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
-          ListTile(
-            iconColor: Colors.white,
-            leading: Icon(Icons.security_outlined),
-            title: const Text(
-              'Security',
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {},
+          CompoDrawer(
+            label: "Security",
+            LeadIcon: Icons.security,
           ),
           SizedBox(height: 100),
           TextButton.icon(
