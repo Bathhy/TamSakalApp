@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class FavSchool extends StatelessWidget {
   const FavSchool({super.key});
@@ -10,15 +11,88 @@ class FavSchool extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          UniText(
-            label: "Favourite University",
-            color: myBlueColor,
-            fontweight: FontWeight.bold,
-            fontsize: 25,
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            UniText(
+              label: "Favourite University",
+              color: myBlueColor,
+              fontweight: FontWeight.bold,
+              fontsize: 25,
+            ),
+            Expanded(
+              child: ListView.separated(
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 10,
+                ),
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Stack(
+                    children: [
+                      Container(
+                        height: 150,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.grey.shade300),
+                      ),
+                      Container(
+                        height: 150,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              bottomLeft: Radius.circular(20)),
+                          color: myBlueColor,
+                          image: DecorationImage(
+                              image: AssetImage(
+                                imageMIT,
+                              ),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 140),
+                        child: UniText(
+                          label: "RUPP",
+                          color: Colors.black,
+                          fontsize: 20,
+                          fontweight: FontWeight.bold,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 140, top: 30),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.domain,
+                                  color: Colors.black,
+                                ),
+                                UniText(label: "University"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.schedule,
+                                  color: Colors.black,
+                                ),
+                                UniText(label: "6:00AM - 8:45PM"),
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  );
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
