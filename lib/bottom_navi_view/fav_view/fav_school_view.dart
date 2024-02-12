@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
-import 'package:get/get.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class FavSchool extends StatelessWidget {
@@ -74,6 +73,7 @@ class FavSchool extends StatelessWidget {
                                 UniText(label: "University"),
                               ],
                             ),
+                            SizedBox(height: 5),
                             Row(
                               children: [
                                 Icon(
@@ -81,6 +81,26 @@ class FavSchool extends StatelessWidget {
                                   color: Colors.black,
                                 ),
                                 UniText(label: "6:00AM - 8:45PM"),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.monetization_on_outlined,
+                                  color: Colors.black,
+                                ),
+                                UniText(label: "500\$ - 2500\$"),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.location_on_sharp,
+                                  color: Colors.black,
+                                ),
+                                UniText(label: "Phnom Penh"),
                               ],
                             ),
                           ],
