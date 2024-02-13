@@ -22,36 +22,45 @@ class BottomNaviView extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-                size: 30,
+              icon: compoBottomIcon(icon: Icons.home_outlined),
+              label: "",
+            ),
+            BottomNavigationBarItem(
+              icon: compoBottomIcon(
+                icon: Icons.favorite_outline_outlined,
               ),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.favorite_outline,
-                size: 30,
+              icon: compoBottomIcon(
+                icon: Icons.search,
               ),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-                size: 30,
-              ),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_2_outlined,
-                size: 30,
+              icon: compoBottomIcon(
+                icon: Icons.person_2_outlined,
               ),
               label: "",
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class compoBottomIcon extends StatelessWidget {
+  compoBottomIcon({
+    super.key,
+    this.icon,
+  });
+  final IconData? icon;
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      icon,
+      size: 30,
     );
   }
 }
