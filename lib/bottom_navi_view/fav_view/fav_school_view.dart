@@ -105,7 +105,18 @@ class FavSchool extends StatelessWidget {
                             ),
                           ],
                         ),
-                      )
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.favorite_border_outlined),
+                            color: Colors.black,
+                            iconSize: 30,
+                          )
+                        ],
+                      ),
                     ],
                   );
                 },

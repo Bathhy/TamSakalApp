@@ -47,50 +47,37 @@ class SearchPage extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 10),
           Expanded(
             child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 10),
               separatorBuilder: (context, index) => SizedBox(
                 height: 10,
               ),
               itemCount: 3,
               itemBuilder: (context, index) {
-                return Stack(
-                  children: [
-                    Container(
-                      height: 270,
-                      width: 400,
-                      decoration: BoxDecoration(color: Colors.grey.shade300),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 170,
-                          width: 250,
-                          decoration: BoxDecoration(
+                return Container(
+                  height: Get.height * 0.3,
+                  width: Get.width * 0.2,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey.shade300),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10),
+                      Container(
+                        height: Get.height * 0.2,
+                        width: Get.width * 0.7,
+                        decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: myBlueColor,
-                            image: DecorationImage(
-                                image: AssetImage(
-                                  imageMIT,
-                                ),
-                                fit: BoxFit.cover),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 140, top: 170),
-                      child: UniText(
-                        label: "RUPP",
-                        color: Colors.black,
+                            color: Colors.red),
+                      ),
+                      UniText(
+                        label: "Royal University of Phnom Penh",
                         fontsize: 20,
                         fontweight: FontWeight.bold,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 140, top: 170),
-                      child: Column(
+                      Row(
                         children: [
                           Row(
                             children: [
@@ -101,17 +88,7 @@ class SearchPage extends StatelessWidget {
                               UniText(label: "University"),
                             ],
                           ),
-                          SizedBox(height: 5),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.schedule,
-                                color: Colors.black,
-                              ),
-                              UniText(label: "6:00AM - 8:45PM"),
-                            ],
-                          ),
-                          SizedBox(height: 5),
+                          SizedBox(width: 30),
                           Row(
                             children: [
                               Icon(
@@ -121,7 +98,7 @@ class SearchPage extends StatelessWidget {
                               UniText(label: "500\$ - 2500\$"),
                             ],
                           ),
-                          SizedBox(height: 5),
+                          SizedBox(width: 30),
                           Row(
                             children: [
                               Icon(
@@ -132,9 +109,9 @@ class SearchPage extends StatelessWidget {
                             ],
                           ),
                         ],
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 );
               },
             ),
