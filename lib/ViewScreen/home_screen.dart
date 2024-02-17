@@ -26,6 +26,7 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
+    int _activepage = 0;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -186,21 +187,50 @@ class _HomescreenState extends State<Homescreen> {
   }
 
   Widget _pageviewMeth() {
+    int _activepage = 0;
     return SizedBox(
       height: Get.height * 0.35,
       child: Container(
-        child: PageView.builder(
-          itemCount: _pageview.allList.length,
-          itemBuilder: (context, index) {
-            return Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(_pageview.allList[index].imgUni),
-                    fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            );
-          },
+        child: Stack(
+          children: [
+            PageView.builder(
+              itemCount: _pageview.allList.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(_pageview.allList[index].imgUni),
+                        fit: BoxFit.cover),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                );
+              },
+            ),
+            Positioned(
+                bottom: 5,
+                left: 0,
+                right: 0,
+                height: 10,
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List<Widget>.generate(
+                      3,
+                      (index) {
+                        return Container(
+                          padding: EdgeInsets.only(right: 6),
+                          child: CircleAvatar(
+                            radius: 8,
+                            backgroundColor: _activepage == index
+                                ? myBlueColor
+                                : Colors.white,
+                          ),
+                        );
+                      },
+                    ).toList(),
+                  ),
+                ))
+          ],
         ),
       ),
     );
