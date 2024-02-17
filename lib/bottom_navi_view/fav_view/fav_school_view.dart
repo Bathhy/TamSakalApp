@@ -34,7 +34,7 @@ class FavSchool extends StatelessWidget {
                         height: 150,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.grey.shade300),
+                            color: colorgrey),
                       ),
                       Container(
                         height: 150,

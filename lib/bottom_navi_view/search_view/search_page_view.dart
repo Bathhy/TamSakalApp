@@ -61,7 +61,7 @@ class SearchPage extends StatelessWidget {
                   width: Get.width * 0.2,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.grey.shade300),
+                      color: colorgrey),
                   child: Column(
                     children: [
                       SizedBox(height: 10),
