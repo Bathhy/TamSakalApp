@@ -8,3 +8,4 @@ const String imageCADT = 'assets/images/cadt.jpg';
 const String imageCode = 'assets/images/codde.png';
 const String imageArch = 'assets/images/arch.png';
 const String Unilife = 'assets/images/unilife.jpg';
+const String UPLogo = 'assets/images/UP logo.jpg';

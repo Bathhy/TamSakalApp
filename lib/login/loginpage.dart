@@ -39,7 +39,7 @@ class _LoginpageState extends State<Loginpage> {
               padding: const EdgeInsets.all(20.0),
               child: ClipOval(
                 child: Image.asset(
-                  imageGS,
+                  UPLogo,
                   height: 150.0,
                   width: 150.0,
                   fit: BoxFit.cover,

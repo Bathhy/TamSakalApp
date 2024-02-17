@@ -70,7 +70,9 @@ class SearchPage extends StatelessWidget {
                         width: Get.width * 0.7,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.red),
+                            image: DecorationImage(
+                                image: AssetImage(imageCADT),
+                                fit: BoxFit.cover)),
                       ),
                       UniText(
                         label: "Royal University of Phnom Penh",
