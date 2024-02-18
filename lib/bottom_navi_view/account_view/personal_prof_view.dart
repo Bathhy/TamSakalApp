@@ -10,10 +10,19 @@ class PersonalAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: myBlueColor,
+        centerTitle: true,
+        title: UniText(label: "Account Setting", color: Colors.white),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(Icons.arrow_back_ios),
+            color: Colors.white),
+      ),
       body: Column(
         children: [
-          _AppbarProf(),
-          SizedBox(height: 10),
           _profileNamecard(),
           SizedBox(height: 20),
           _personalinforcard()
@@ -153,12 +162,6 @@ class PersonalAccount extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              UniText(label: "Account Setting", fontweight: FontWeight.bold),
-            ],
-          ),
           SizedBox(height: 10),
           Row(
             children: [
@@ -217,27 +220,33 @@ class PersonalAccount extends StatelessWidget {
     );
   }
 
-  Widget _AppbarProf() {
-    return Container(
-      height: Get.height * 0.14,
-      decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          color: myBlueColor,
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20))),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 40, left: 20),
-            child: UniText(
-                label: "Welcome Sam",
-                color: Colors.white,
-                fontweight: FontWeight.bold,
-                fontsize: 30),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _AppbarProf() {
+  //   return Container(
+  //     height: Get.height * 0.14,
+  //     decoration: BoxDecoration(
+  //         shape: BoxShape.rectangle,
+  //         color: myBlueColor,
+  //         borderRadius: BorderRadius.only(
+  //             bottomLeft: Radius.circular(20),
+  //             bottomRight: Radius.circular(20))),
+  //     child: Row(
+  //       children: [
+  //         IconButton(
+  //             onPressed: () {
+  //               Get.back();
+  //             },
+  //             icon: Icon(Icons.arrow_back_ios),
+  //             color: Colors.white),
+  //         Padding(
+  //           padding: const EdgeInsets.only(top: 40, left: 20),
+  //           child: UniText(
+  //               label: "Welcome Sam",
+  //               color: Colors.white,
+  //               fontweight: FontWeight.bold,
+  //               fontsize: 30),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

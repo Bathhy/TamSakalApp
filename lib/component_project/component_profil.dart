@@ -10,6 +10,7 @@ class CompoProfilView extends StatelessWidget {
     this.textcolor,
     this.iconbutton,
     this.iconbuttoncolor = myBlueColor,
+    this.onpress,
   });
   final String label;
   final IconData? icon;
@@ -17,6 +18,7 @@ class CompoProfilView extends StatelessWidget {
   final Color? textcolor;
   final IconData? iconbutton;
   final Color? iconbuttoncolor;
+  final VoidCallback? onpress;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class CompoProfilView extends StatelessWidget {
           ],
         ),
         IconButton(
-            onPressed: () {},
+            onPressed: onpress,
             icon: Icon(
               iconbutton,
               color: iconbuttoncolor,

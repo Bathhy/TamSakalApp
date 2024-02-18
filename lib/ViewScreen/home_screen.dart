@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practiceloginlayout/ViewScreen/notification_view.dart';
 import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
@@ -42,7 +43,9 @@ class _HomescreenState extends State<Homescreen> {
           Stack(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(NotificationView());
+                },
                 icon: Icon(
                   Icons.notifications,
                   color: Colors.white,
@@ -269,21 +272,6 @@ class _HomescreenState extends State<Homescreen> {
           CompoDrawer(
             label: "Security",
             LeadIcon: Icons.security,
-          ),
-          SizedBox(height: 100),
-          TextButton.icon(
-            onPressed: () {},
-            icon: Icon(
-              Icons.arrow_forward_sharp,
-              color: Colors.white,
-            ),
-            label: Text(
-              'Sign-Out',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17,
-              ),
-            ),
           ),
         ],
       ),

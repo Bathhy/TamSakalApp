@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/component_project/component_profil.dart';
@@ -11,7 +12,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorgrey,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           Container(
@@ -92,22 +93,32 @@ class ProfileView extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 20),
           Container(
-            height: Get.height * 0.4,
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            height: Get.height * 0.23,
             width: Get.width * 0.9,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20), color: Colors.white),
+                borderRadius: BorderRadius.circular(20), color: colorgrey),
             child: Column(
               children: [
                 CompoProfilView(
-                  label: "Edit Profile",
-                  icon: Icons.border_color,
-                  iconbutton: Icons.arrow_forward_ios,
+                    label: "Edit Profile",
+                    icon: Icons.border_color,
+                    iconbutton: Icons.arrow_forward_ios,
+                    onpress: () {
+                      Get.to(PersonalAccount());
+                    }),
+                SizedBox(
+                  height: 10,
                 ),
                 CompoProfilView(
                   label: "Settings",
                   icon: Icons.settings,
                   iconbutton: Icons.arrow_forward_ios,
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 CompoProfilView(
                   label: "Logout",
