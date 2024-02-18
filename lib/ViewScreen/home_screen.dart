@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/component_project/textformfield_compo.dart';
@@ -248,7 +249,12 @@ class _HomescreenState extends State<Homescreen> {
                     image: AssetImage(Unilife), fit: BoxFit.fill)),
           ),
           SizedBox(height: 10),
-          CompoDrawer(label: "Profile", LeadIcon: Icons.person_2_rounded),
+          CompoDrawer(
+              label: "Profile",
+              LeadIcon: Icons.person_2_rounded,
+              ontap: () {
+                Get.to(PersonalAccount());
+              }),
           Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
           CompoDrawer(
             label: "Scholarship",

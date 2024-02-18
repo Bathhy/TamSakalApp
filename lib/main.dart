@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:practiceloginlayout/ViewScreen/profile_ui.dart';
 import 'package:practiceloginlayout/controller/controller_binding/binding_control.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/singup/sign_up.dart';
 
 void main() {
   runApp(const MyWidget());
@@ -20,7 +22,11 @@ class _MyWidgetState extends State<MyWidget> {
     return GetMaterialApp(
       initialBinding: UniBingding(),
       debugShowCheckedModeBanner: false,
-      home: Loginpage(),
+      initialRoute: '/Login',
+      getPages: [
+        GetPage(name: '/Profilview', page: () => ProfileView()),
+        GetPage(name: '/Login', page: () => Loginpage()),
+      ],
     );
   }
 }
