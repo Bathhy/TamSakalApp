@@ -49,12 +49,15 @@ class _SignupscreenState extends State<Signupscreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Create Your Account",
-                    style: TextStyle(
-                        color: myBlueColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: const Text(
+                      "Create Your Account",
+                      style: TextStyle(
+                          color: myBlueColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   const SizedBox(height: 16),
                   Row(

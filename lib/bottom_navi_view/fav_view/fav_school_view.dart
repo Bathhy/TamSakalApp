@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
+import 'package:practiceloginlayout/controller/fav_uni_control.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class FavSchool extends StatelessWidget {
@@ -8,6 +10,7 @@ class FavSchool extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favcontroller _favcontrol = Get.find();
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -26,8 +29,9 @@ class FavSchool extends StatelessWidget {
                 separatorBuilder: (context, index) => SizedBox(
                   height: 10,
                 ),
-                itemCount: 3,
+                itemCount: _favcontrol.Unidata.length,
                 itemBuilder: (context, index) {
+                  final favUni = _favcontrol.Unidata[index];
                   return Stack(
                     children: [
                       Container(
@@ -46,7 +50,7 @@ class FavSchool extends StatelessWidget {
                           color: myBlueColor,
                           image: DecorationImage(
                               image: AssetImage(
-                                imageMIT,
+                                favUni.imgUni,
                               ),
                               fit: BoxFit.cover),
                         ),
@@ -54,9 +58,9 @@ class FavSchool extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 140),
                         child: UniText(
-                          label: "RUPP",
+                          label: favUni.nameUni,
                           color: Colors.black,
-                          fontsize: 20,
+                          fontsize: 13,
                           fontweight: FontWeight.bold,
                         ),
                       ),

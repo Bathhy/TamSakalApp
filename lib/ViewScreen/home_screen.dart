@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/ViewScreen/notification_view.dart';
+import 'package:practiceloginlayout/ViewScreen/scholar_info.dart';
 import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
@@ -258,20 +259,13 @@ class _HomescreenState extends State<Homescreen> {
               ontap: () {
                 Get.to(PersonalAccount());
               }),
-          Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
+          // Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
           CompoDrawer(
             label: "Scholarship",
             LeadIcon: Icons.sell_rounded,
-          ),
-          Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
-          CompoDrawer(
-            label: "Privacy Policy",
-            LeadIcon: Icons.sticky_note_2,
-          ),
-          Divider(color: Colors.white, indent: 60.0, endIndent: 58.0),
-          CompoDrawer(
-            label: "Security",
-            LeadIcon: Icons.security,
+            ontap: () {
+              Get.to(ScholarshipInfo());
+            },
           ),
         ],
       ),
