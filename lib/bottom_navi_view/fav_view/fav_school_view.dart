@@ -77,17 +77,7 @@ class FavSchool extends StatelessWidget {
                                 UniText(label: "University"),
                               ],
                             ),
-                            SizedBox(height: 5),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.schedule,
-                                  color: Colors.black,
-                                ),
-                                UniText(label: "6:00AM - 8:45PM"),
-                              ],
-                            ),
-                            SizedBox(height: 5),
+                            SizedBox(height: 10),
                             Row(
                               children: [
                                 Icon(

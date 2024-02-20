@@ -75,34 +75,6 @@ class _HomescreenState extends State<Homescreen> {
       drawer: drawerMeth(),
       body: ListView(
         children: [
-          // Card(
-          //   elevation: 4.0,
-          //   color: myBlueColor,
-          //   shape: const RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.only(
-          //           bottomLeft: Radius.circular(20),
-          //           bottomRight: Radius.circular(20))),
-          //   child: SizedBox(
-          //     height: 70,
-          //     child: Column(
-          //       mainAxisAlignment: MainAxisAlignment.end,
-          //       children: [
-          //         Row(
-          //           mainAxisAlignment: MainAxisAlignment.start,
-          //           children: [
-          //             Text(
-          //               "Welcome back Joji",
-          //               style: TextStyle(
-          //                   color: Colors.white,
-          //                   fontWeight: FontWeight.bold,
-          //                   fontSize: 20),
-          //             ),
-          //           ],
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // ),
           SizedBox(height: 15),
           _pageviewMeth(),
           SizedBox(height: 15),
@@ -114,7 +86,6 @@ class _HomescreenState extends State<Homescreen> {
             fontweight: FontWeight.bold,
           ),
           SizedBox(height: 15),
-
           UniText(
             label: "Here is the most popular Degree in Cambodia",
             fontsize: 15,
