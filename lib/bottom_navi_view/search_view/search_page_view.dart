@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/ViewScreen/detail_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
@@ -56,63 +57,68 @@ class SearchPage extends StatelessWidget {
               ),
               itemCount: 3,
               itemBuilder: (context, index) {
-                return Container(
-                  height: Get.height * 0.3,
-                  width: Get.width * 0.2,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: colorgrey),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 10),
-                      Container(
-                        height: Get.height * 0.2,
-                        width: Get.width * 0.7,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                                image: AssetImage(imageCADT),
-                                fit: BoxFit.cover)),
-                      ),
-                      UniText(
-                        label: "Royal University of Phnom Penh",
-                        fontsize: 20,
-                        fontweight: FontWeight.bold,
-                      ),
-                      Row(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.domain,
-                                color: Colors.black,
-                              ),
-                              UniText(label: "University"),
-                            ],
-                          ),
-                          SizedBox(width: 30),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.monetization_on_outlined,
-                                color: Colors.black,
-                              ),
-                              UniText(label: "500\$ - 2500\$"),
-                            ],
-                          ),
-                          SizedBox(width: 30),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.location_on_sharp,
-                                color: Colors.black,
-                              ),
-                              UniText(label: "Phnom Penh"),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],
+                return InkWell(
+                  onTap: () {
+                    Get.to(DetailUniView());
+                  },
+                  child: Container(
+                    height: Get.height * 0.3,
+                    width: Get.width * 0.2,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: colorgrey),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 10),
+                        Container(
+                          height: Get.height * 0.2,
+                          width: Get.width * 0.7,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: DecorationImage(
+                                  image: AssetImage(imageCADT),
+                                  fit: BoxFit.cover)),
+                        ),
+                        UniText(
+                          label: "Royal University of Phnom Penh",
+                          fontsize: 20,
+                          fontweight: FontWeight.bold,
+                        ),
+                        Row(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.domain,
+                                  color: Colors.black,
+                                ),
+                                UniText(label: "University"),
+                              ],
+                            ),
+                            SizedBox(width: 30),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.monetization_on_outlined,
+                                  color: Colors.black,
+                                ),
+                                UniText(label: "500\$ - 2500\$"),
+                              ],
+                            ),
+                            SizedBox(width: 30),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.location_on_sharp,
+                                  color: Colors.black,
+                                ),
+                                UniText(label: "Phnom Penh"),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 );
               },

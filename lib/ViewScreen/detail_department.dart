@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
-import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
-class DetailUniView extends StatelessWidget {
-  const DetailUniView({super.key});
+class DetailDepartView extends StatelessWidget {
+  const DetailDepartView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,48 +33,17 @@ class DetailUniView extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                    image: AssetImage(imageRUPP), fit: BoxFit.cover)),
+                    image: NetworkImage(
+                        'https://www.rupp.edu.kh/fe/factor4.0/images/img_stem_building.jpg'),
+                    fit: BoxFit.cover)),
           ),
           SizedBox(height: 15),
           UniText(
-            label: "Royal University of Phnom Penh (RUPP)",
+            label: "Department of Information Technology Engineering",
             fontsize: 20,
             fontweight: FontWeight.bold,
           ),
-          SizedBox(height: 15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(
-                    Icons.domain,
-                    color: Colors.black,
-                  ),
-                  UniText(label: "University"),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.monetization_on_outlined,
-                    color: Colors.black,
-                  ),
-                  UniText(label: "500\$ - 2500\$"),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.location_on_sharp,
-                    color: Colors.black,
-                  ),
-                  UniText(label: "Phnom Penh"),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -86,13 +54,14 @@ class DetailUniView extends StatelessWidget {
               ),
               UniText(
                 label:
-                    "The Royal University of Phnom Penh (RUPP) has evolved significantly since its founding in 1960. Recent progress in various areas positions RUPP to drive Cambodia's socio-economic development through education, research, and community service. The Strategic Plan 2019-2023 outlines RUPP's vision to align with national goals and become a regional hub for intellectual and cultural development.",
+                    "The ITE program at the Faculty of Engineering, Royal University of Phnom Penh, trains students in high-demand Information Technology skills. Through a blend of theory and practical coursework, including elective courses like Artificial Intelligence and Game Development, students gain real-world problem-solving experience. Internships and hands-on projects prepare students for careers in the tech industry, emphasizing teamwork and critical thinking.",
                 fontsize: 15,
               ),
             ],
           ),
           SizedBox(height: 10),
-          UniText(label: "Faculty:", fontweight: FontWeight.bold, fontsize: 20),
+          UniText(label: "Major:", fontweight: FontWeight.bold, fontsize: 20),
+          SizedBox(height: 15),
           GridView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -100,7 +69,7 @@ class DetailUniView extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 19,
                 mainAxisSpacing: 10,
-                childAspectRatio: 0.8),
+                childAspectRatio: 0.7),
             itemCount: 5,
             itemBuilder: (context, index) {
               return Container(
@@ -117,10 +86,22 @@ class DetailUniView extends StatelessWidget {
                           color: Colors.black),
                     ),
                     SizedBox(height: 10),
-                    UniText(
-                      label: "Faculty of Engineering",
-                      fontsize: 15,
-                      fontweight: FontWeight.bold,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        UniText(
+                          label: " Data Science and Engineering",
+                          fontsize: 13,
+                          fontweight: FontWeight.bold,
+                        ),
+                        SizedBox(height: 10),
+                        UniText(
+                          label: " Bacherlor Degree",
+                          fontsize: 13,
+                          fontweight: FontWeight.bold,
+                          color: myBlueColor,
+                        ),
+                      ],
                     ),
                   ],
                 ),
