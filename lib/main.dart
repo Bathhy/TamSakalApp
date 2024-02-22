@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_department.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_faculty.dart';
+import 'package:practiceloginlayout/ViewScreen/detail_major.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_view.dart';
 import 'package:practiceloginlayout/ViewScreen/profile_ui.dart';
 import 'package:practiceloginlayout/controller/controller_binding/binding_control.dart';
@@ -25,9 +26,10 @@ class _MyWidgetState extends State<MyWidget> {
     return GetMaterialApp(
       initialBinding: UniBingding(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/DetailDepart',
+      initialRoute: '/DetailMajor',
       getPages: [
         GetPage(name: '/Profilview', page: () => ProfileView()),
+        GetPage(name: '/DetailMajor', page: () => DetailMajorView()),
         GetPage(name: '/Login', page: () => Loginpage()),
         GetPage(name: '/Detail', page: () => DetailUniView()),
         GetPage(name: '/DetailFacul', page: () => DetailFacultyView()),
