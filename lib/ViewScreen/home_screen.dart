@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practiceloginlayout/ViewScreen/category_detail.dart';
 import 'package:practiceloginlayout/ViewScreen/notification_view.dart';
 import 'package:practiceloginlayout/ViewScreen/scholar_info.dart';
 import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_view.dart';
@@ -93,68 +94,73 @@ class _HomescreenState extends State<Homescreen> {
             color: myBlueColor,
           ),
           SizedBox(height: 15),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 19,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.9,
-              ),
-              itemCount: _pageview.CategoryUniList.length,
-              itemBuilder: (context, index) {
-                final cate = _pageview.CategoryUniList[index];
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 233, 233, 240),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Container(
-                    child: LayoutBuilder(
-                      builder: (context, constraint) {
-                        return Container(
-                          child: Stack(
-                            children: [
-                              Image.asset(
-                                cate.imgCateuni,
-                                fit: BoxFit.fill,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 160,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      cate.CateUniname,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
+          InkWell(
+            onTap: () {
+              Get.to(CategoryDetailview());
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 19,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.9,
+                ),
+                itemCount: _pageview.CategoryUniList.length,
+                itemBuilder: (context, index) {
+                  final cate = _pageview.CategoryUniList[index];
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color.fromARGB(255, 233, 233, 240),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
                     ),
-                  ),
-                );
-              },
+                    child: Container(
+                      child: LayoutBuilder(
+                        builder: (context, constraint) {
+                          return Container(
+                            child: Stack(
+                              children: [
+                                Image.asset(
+                                  cate.imgCateuni,
+                                  fit: BoxFit.fill,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 160,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        cate.CateUniname,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],
