@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/ViewScreen/detail_faculty.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
@@ -103,26 +104,32 @@ class DetailUniView extends StatelessWidget {
                 childAspectRatio: 0.8),
             itemCount: 5,
             itemBuilder: (context, index) {
-              return Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20), color: colorgrey),
-                child: Column(
-                  children: [
-                    Container(
-                      height: Get.height * 0.18,
-                      width: Get.width * 0.35,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: 10),
-                    UniText(
-                      label: "Faculty of Engineering",
-                      fontsize: 15,
-                      fontweight: FontWeight.bold,
-                    ),
-                  ],
+              return InkWell(
+                onTap: () {
+                  Get.to(DetailFacultyView());
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: colorgrey),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: Get.height * 0.18,
+                        width: Get.width * 0.35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.black),
+                      ),
+                      SizedBox(height: 10),
+                      UniText(
+                        label: "Faculty of Engineering",
+                        fontsize: 15,
+                        fontweight: FontWeight.bold,
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

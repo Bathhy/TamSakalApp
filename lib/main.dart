@@ -26,7 +26,7 @@ class _MyWidgetState extends State<MyWidget> {
     return GetMaterialApp(
       initialBinding: UniBingding(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/DetailMajor',
+      initialRoute: '/Login',
       getPages: [
         GetPage(name: '/Profilview', page: () => ProfileView()),
         GetPage(name: '/DetailMajor', page: () => DetailMajorView()),
