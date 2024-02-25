@@ -77,8 +77,7 @@ class DetailMajorView extends StatelessWidget {
                       return Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage(imageCurDSE),
-                              fit: BoxFit.cover),
+                              image: AssetImage(imageCurDSE), fit: BoxFit.fill),
                           borderRadius: BorderRadius.circular(10),
                         ),
                       );

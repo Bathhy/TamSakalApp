@@ -82,9 +82,42 @@ class _SignupscreenState extends State<Signupscreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      textformfieldWithIcon(
-                        authController: authController,
-                        label: "Confirm Password",
+                      Container(
+                        width: 350,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: myBlueColor.withOpacity(0.3),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Obx(
+                          () => TextFormField(
+                            obscureText: authController.cpasshidden.value,
+                            decoration: InputDecoration(
+                              hintText: "Confirm password",
+                              suffixIcon: InkWell(
+                                child: Icon(
+                                  authController.cpasshidden.value
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.grey,
+                                ),
+                                onTap: () {
+                                  authController.hidecslogin();
+                                },
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
                       )
                     ],
                   ),
