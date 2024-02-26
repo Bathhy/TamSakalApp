@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/controller/fav_uni_control.dart';
-import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class FavSchool extends StatelessWidget {
   const FavSchool({super.key});

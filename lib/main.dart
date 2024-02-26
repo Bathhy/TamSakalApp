@@ -3,7 +3,9 @@ import 'package:practiceloginlayout/ViewScreen/detail_department.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_faculty.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_major.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_view.dart';
+import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
 import 'package:practiceloginlayout/ViewScreen/profile_ui.dart';
+import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
 import 'package:practiceloginlayout/controller/controller_binding/binding_control.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:get/get.dart';
@@ -26,8 +28,9 @@ class _MyWidgetState extends State<MyWidget> {
     return GetMaterialApp(
       initialBinding: UniBingding(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/Login',
+      initialRoute: '/bottom',
       getPages: [
+        GetPage(name: '/bottom', page: () => BottomNaviView()),
         GetPage(name: '/Profilview', page: () => ProfileView()),
         GetPage(name: '/DetailMajor', page: () => DetailMajorView()),
         GetPage(name: '/Login', page: () => Loginpage()),
