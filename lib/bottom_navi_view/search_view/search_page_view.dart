@@ -64,79 +64,81 @@ class _SearchPageState extends State<SearchPage> {
           ),
           SizedBox(height: 10),
           Expanded(
-            child: ListView.separated(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              separatorBuilder: (context, index) => SizedBox(
-                height: 10,
-              ),
-              itemCount: _searchcontrol.unilist.length,
-              itemBuilder: (context, index) {
-                final SearchUni = _searchcontrol.unilist[index];
-                return InkWell(
-                  onTap: () {
-                    Get.to(DetailUniView());
-                  },
-                  child: Container(
-                    height: Get.height * 0.3,
-                    width: Get.width * 0.2,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: colorgrey),
-                    child: Column(
-                      children: [
-                        SizedBox(height: 10),
-                        Container(
-                          height: Get.height * 0.2,
-                          width: Get.width * 0.7,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              image: DecorationImage(
-                                  image: AssetImage(SearchUni.imgUni),
-                                  fit: BoxFit.cover)),
-                        ),
-                        UniText(
-                          label: SearchUni.nameUni,
-                          fontsize: 20,
-                          fontweight: FontWeight.bold,
-                        ),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.domain,
-                                  color: Colors.black,
-                                ),
-                                UniText(label: "University"),
-                              ],
-                            ),
-                            SizedBox(width: 30),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.monetization_on_outlined,
-                                  color: Colors.black,
-                                ),
-                                UniText(label: SearchUni.price),
-                              ],
-                            ),
-                            SizedBox(width: 30),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.location_on_sharp,
-                                  color: Colors.black,
-                                ),
-                                UniText(label: "Phnom Penh"),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
+            child: Obx(
+              () => ListView.separated(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 10,
+                ),
+                itemCount: _searchcontrol.unilist.length,
+                itemBuilder: (context, index) {
+                  final SearchUni = _searchcontrol.unilist[index];
+                  return InkWell(
+                    onTap: () {
+                      Get.to(DetailUniView());
+                    },
+                    child: Container(
+                      height: Get.height * 0.3,
+                      width: Get.width * 0.2,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: colorgrey),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 10),
+                          Container(
+                            height: Get.height * 0.2,
+                            width: Get.width * 0.7,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage(SearchUni.imgUni),
+                                    fit: BoxFit.cover)),
+                          ),
+                          UniText(
+                            label: SearchUni.nameUni,
+                            fontsize: 20,
+                            fontweight: FontWeight.bold,
+                          ),
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.domain,
+                                    color: Colors.black,
+                                  ),
+                                  UniText(label: "University"),
+                                ],
+                              ),
+                              SizedBox(width: 30),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.monetization_on_outlined,
+                                    color: Colors.black,
+                                  ),
+                                  UniText(label: SearchUni.price),
+                                ],
+                              ),
+                              SizedBox(width: 30),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_sharp,
+                                    color: Colors.black,
+                                  ),
+                                  UniText(label: "Phnom Penh"),
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
             // child: GetBuilder<SearchingController>(
             //   builder: (controller) {
