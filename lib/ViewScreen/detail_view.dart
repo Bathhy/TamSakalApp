@@ -20,6 +20,13 @@ class DetailUniView extends StatelessWidget {
           icon: Icon(Icons.arrow_back_ios),
           color: Colors.white,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.favorite_border_outlined),
+            color: Colors.white,
+          )
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -122,10 +129,10 @@ class DetailUniView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.black),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 5),
                       UniText(
                         label: "Faculty of Engineering",
-                        fontsize: 15,
+                        fontsize: 14,
                         fontweight: FontWeight.bold,
                       ),
                     ],

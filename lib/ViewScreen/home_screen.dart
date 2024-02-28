@@ -75,6 +75,7 @@ class _HomescreenState extends State<Homescreen> {
       ),
       drawer: drawerMeth(),
       body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         children: [
           SizedBox(height: 15),
           _pageviewMeth(),
@@ -98,69 +99,66 @@ class _HomescreenState extends State<Homescreen> {
             onTap: () {
               Get.to(CategoryDetailview());
             },
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 19,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 0.9,
-                ),
-                itemCount: _pageview.CategoryUniList.length,
-                itemBuilder: (context, index) {
-                  final cate = _pageview.CategoryUniList[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color.fromARGB(255, 233, 233, 240),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Container(
-                      child: LayoutBuilder(
-                        builder: (context, constraint) {
-                          return Container(
-                            child: Stack(
-                              children: [
-                                Image.asset(
-                                  cate.imgCateuni,
-                                  fit: BoxFit.fill,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    top: 160,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        cate.CateUniname,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  );
-                },
+            child: GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 19,
+                mainAxisSpacing: 10,
+                childAspectRatio: 0.9,
               ),
+              itemCount: _pageview.CategoryUniList.length,
+              itemBuilder: (context, index) {
+                final cate = _pageview.CategoryUniList[index];
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color.fromARGB(255, 233, 233, 240),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    child: LayoutBuilder(
+                      builder: (context, constraint) {
+                        return Container(
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                cate.imgCateuni,
+                                fit: BoxFit.fill,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 160,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      cate.CateUniname,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ],
@@ -183,6 +181,7 @@ class _HomescreenState extends State<Homescreen> {
                     image: DecorationImage(
                         image: AssetImage(_pageview.allList[index].imgUni),
                         fit: BoxFit.cover),
+                    border: Border.all(color: Colors.black, width: 5),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 );

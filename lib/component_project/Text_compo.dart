@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class UniText extends StatelessWidget {
   UniText({
@@ -16,8 +17,8 @@ class UniText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style:
-          TextStyle(color: color, fontWeight: fontweight, fontSize: fontsize),
+      style: GoogleFonts.nunito(
+          color: color, fontWeight: fontweight, fontSize: fontsize),
     );
   }
 }

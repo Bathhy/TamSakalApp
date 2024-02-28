@@ -100,7 +100,6 @@ class DetailDepartView extends StatelessWidget {
                             fontsize: 13,
                             fontweight: FontWeight.bold,
                           ),
-                          SizedBox(height: 10),
                           UniText(
                             label: " Bacherlor Degree",
                             fontsize: 13,
