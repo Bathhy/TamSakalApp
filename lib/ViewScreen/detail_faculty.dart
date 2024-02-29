@@ -71,7 +71,7 @@ class DetailFacultyView extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 19,
                 mainAxisSpacing: 10,
-                childAspectRatio: 0.7),
+                childAspectRatio: 0.72),
             itemCount: 5,
             itemBuilder: (context, index) {
               return InkWell(
@@ -96,7 +96,7 @@ class DetailFacultyView extends StatelessWidget {
                       UniText(
                         label:
                             "Department of Information Technology Engineering",
-                        fontsize: 13,
+                        fontsize: 12,
                         fontweight: FontWeight.bold,
                       ),
                     ],

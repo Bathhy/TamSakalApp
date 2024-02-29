@@ -9,6 +9,7 @@ import 'package:practiceloginlayout/component_project/textformfield_compo.dart';
 import 'package:practiceloginlayout/controller/page_control.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Homescreen extends StatefulWidget {
   Homescreen({super.key});
@@ -37,7 +38,7 @@ class _HomescreenState extends State<Homescreen> {
         centerTitle: true,
         title: Text(
           "University Pedia",
-          style: TextStyle(
+          style: GoogleFonts.nunito(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
         backgroundColor: Color.fromARGB(255, 4, 6, 168),
@@ -82,7 +83,7 @@ class _HomescreenState extends State<Homescreen> {
           SizedBox(height: 15),
           UniText(
             label:
-                "University Pedia is a website for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",
+                "University Pedia is a App for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",
             color: Colors.black,
             fontsize: 20,
             fontweight: FontWeight.bold,
@@ -142,10 +143,10 @@ class _HomescreenState extends State<Homescreen> {
                                   children: [
                                     Text(
                                       cate.CateUniname,
-                                      style: TextStyle(
+                                      style: GoogleFonts.openSans(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15,
+                                        fontSize: 13,
                                       ),
                                     ),
                                   ],

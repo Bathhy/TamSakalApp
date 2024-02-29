@@ -27,7 +27,7 @@ class RepoUni {
     ),
     RepoUni(
         imgUni: imageMIT,
-        nameUni: "MIT university",
+        nameUni: "MIT University",
         price: "1000 - 4000",
         CateImage: imageCode),
     RepoUni(

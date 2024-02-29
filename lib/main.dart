@@ -34,7 +34,7 @@ class _MyWidgetState extends State<MyWidget> {
         GetPage(name: '/Profilview', page: () => ProfileView()),
         GetPage(name: '/DetailMajor', page: () => DetailMajorView()),
         GetPage(name: '/Login', page: () => Loginpage()),
-        GetPage(name: '/Detail', page: () => DetailUniView()),
+        // GetPage(name: '/Detail', page: () => DetailUniView()),
         GetPage(name: '/DetailFacul', page: () => DetailFacultyView()),
         GetPage(name: '/DetailDepart', page: () => DetailDepartView()),
       ],

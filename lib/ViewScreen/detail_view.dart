@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/RepoUni/repo_uni.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_faculty.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
+import 'package:practiceloginlayout/controller/fav_uni_control.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class DetailUniView extends StatelessWidget {
-  const DetailUniView({super.key});
+  final RepoUni repo;
+  const DetailUniView(this.repo);
 
   @override
   Widget build(BuildContext context) {
+    final favcontroller _favcontrol = Get.find();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: myBlueColor,
@@ -23,8 +27,16 @@ class DetailUniView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.favorite_border_outlined),
-            color: Colors.white,
+            icon: GetBuilder<favcontroller>(
+              builder: (_) {
+                return Icon(
+                  _favcontrol.toggleFavourite(repo)
+                      ? Icons.favorite
+                      : Icons.favorite_border_outlined,
+                  color: Colors.white,
+                );
+              },
+            ),
           )
         ],
       ),
@@ -42,7 +54,7 @@ class DetailUniView extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                    image: AssetImage(imageRUPP), fit: BoxFit.cover)),
+                    image: AssetImage(repo.imgUni), fit: BoxFit.cover)),
           ),
           SizedBox(height: 15),
           UniText(

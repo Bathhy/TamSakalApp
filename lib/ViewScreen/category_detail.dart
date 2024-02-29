@@ -59,38 +59,41 @@ class CategoryDetailview extends StatelessWidget {
                           fontsize: 20,
                           fontweight: FontWeight.bold,
                         ),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.domain,
-                                  color: Colors.black,
-                                ),
-                                UniText(label: "University"),
-                              ],
-                            ),
-                            SizedBox(width: 30),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.monetization_on_outlined,
-                                  color: Colors.black,
-                                ),
-                                UniText(label: "500\$ - 2500\$"),
-                              ],
-                            ),
-                            SizedBox(width: 30),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.location_on_sharp,
-                                  color: Colors.black,
-                                ),
-                                UniText(label: "Phnom Penh"),
-                              ],
-                            ),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.domain,
+                                    color: Colors.black,
+                                  ),
+                                  UniText(label: "University"),
+                                ],
+                              ),
+                              SizedBox(width: 10),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.monetization_on_outlined,
+                                    color: Colors.black,
+                                  ),
+                                  UniText(label: "500\$ - 2500\$"),
+                                ],
+                              ),
+                              SizedBox(width: 15),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_sharp,
+                                    color: Colors.black,
+                                  ),
+                                  UniText(label: "Phnom Penh"),
+                                ],
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),
