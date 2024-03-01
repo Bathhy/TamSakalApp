@@ -5,6 +5,7 @@ import 'package:practiceloginlayout/ViewScreen/detail_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/controller/search_control.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({
@@ -43,14 +44,14 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         Text(
                           'Search not Found',
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
                         ),
                         Text(
                           'Try searching the item with \n a different keyword.',
-                          style: TextStyle(
+                          style: GoogleFonts.nunito(
                               color: Colors.black54,
                               fontWeight: FontWeight.bold,
                               fontSize: 15),
@@ -140,7 +141,7 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                     UniText(
                       label: SearchUni.nameUni,
-                      fontsize: 16,
+                      fontsize: 14,
                       fontweight: FontWeight.bold,
                     ),
                     Row(
@@ -154,17 +155,17 @@ class _SearchPageState extends State<SearchPage> {
                             UniText(label: "University"),
                           ],
                         ),
-                        SizedBox(width: 20),
+                        SizedBox(width: 5),
                         Row(
                           children: [
                             Icon(
                               Icons.monetization_on_outlined,
                               color: Colors.black,
                             ),
-                            UniText(label: SearchUni.price),
+                            UniText(label: SearchUni.Price),
                           ],
                         ),
-                        SizedBox(width: 20),
+                        SizedBox(width: 5),
                         Row(
                           children: [
                             Icon(

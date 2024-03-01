@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_department.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
@@ -92,11 +93,11 @@ class DetailFacultyView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.black),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 15),
                       UniText(
                         label:
                             "Department of Information Technology Engineering",
-                        fontsize: 12,
+                        fontsize: 10,
                         fontweight: FontWeight.bold,
                       ),
                     ],

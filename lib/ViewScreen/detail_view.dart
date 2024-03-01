@@ -5,7 +5,6 @@ import 'package:practiceloginlayout/ViewScreen/detail_faculty.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/controller/fav_uni_control.dart';
-import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class DetailUniView extends StatelessWidget {
   final RepoUni repo;
@@ -54,11 +53,11 @@ class DetailUniView extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                    image: AssetImage(repo.imgUni), fit: BoxFit.cover)),
+                    image: AssetImage(repo.UniCateImg), fit: BoxFit.cover)),
           ),
           SizedBox(height: 15),
           UniText(
-            label: "Royal University of Phnom Penh (RUPP)",
+            label: repo.nameUni,
             fontsize: 20,
             fontweight: FontWeight.bold,
           ),
@@ -81,7 +80,7 @@ class DetailUniView extends StatelessWidget {
                     Icons.monetization_on_outlined,
                     color: Colors.black,
                   ),
-                  UniText(label: "500\$ - 2500\$"),
+                  UniText(label: repo.Price),
                 ],
               ),
               Row(
@@ -105,8 +104,7 @@ class DetailUniView extends StatelessWidget {
                 fontsize: 20,
               ),
               UniText(
-                label:
-                    "The Royal University of Phnom Penh (RUPP) has evolved significantly since its founding in 1960. Recent progress in various areas positions RUPP to drive Cambodia's socio-economic development through education, research, and community service. The Strategic Plan 2019-2023 outlines RUPP's vision to align with national goals and become a regional hub for intellectual and cultural development.",
+                label: repo.Overview,
                 fontsize: 15,
               ),
             ],
@@ -144,7 +142,7 @@ class DetailUniView extends StatelessWidget {
                       SizedBox(height: 5),
                       UniText(
                         label: "Faculty of Engineering",
-                        fontsize: 14,
+                        fontsize: 12,
                         fontweight: FontWeight.bold,
                       ),
                     ],

@@ -146,7 +146,7 @@ class _HomescreenState extends State<Homescreen> {
                                       style: GoogleFonts.openSans(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 13,
+                                        fontSize: 11,
                                       ),
                                     ),
                                   ],
