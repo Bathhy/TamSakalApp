@@ -99,7 +99,7 @@ class DetailUniView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               UniText(
-                label: "Overview:",
+                label: "Programs:",
                 fontweight: FontWeight.bold,
                 fontsize: 20,
               ),
@@ -119,7 +119,7 @@ class DetailUniView extends StatelessWidget {
                 crossAxisSpacing: 19,
                 mainAxisSpacing: 10,
                 childAspectRatio: 0.8),
-            itemCount: 5,
+            itemCount: repo.unifac.length,
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
@@ -141,7 +141,7 @@ class DetailUniView extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       UniText(
-                        label: "Faculty of Engineering",
+                        label: repo.unifac[index],
                         fontsize: 12,
                         fontweight: FontWeight.bold,
                       ),

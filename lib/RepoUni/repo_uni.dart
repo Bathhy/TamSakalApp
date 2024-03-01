@@ -7,6 +7,7 @@ class RepoUni {
   String UniCateImg = "";
   String Overview = "";
   String Price = "";
+  List<String> unifac = [];
 
   RepoUni({
     required String imgUni,
@@ -15,12 +16,14 @@ class RepoUni {
     required String CateImage,
     required String Overview,
     required String Price,
+    List<String>? unifac,
   }) {
     this.imgUni = imgUni;
     this.nameUni = nameUni;
     this.CateImage = CateImage;
     this.UniCateImg = UniCateImg;
     this.Overview = Overview;
+    this.unifac = unifac ?? [];
     this.Price = Price;
   }
 
@@ -32,7 +35,16 @@ class RepoUni {
         UniCateImg: imageRUPP,
         Overview:
             "The Royal University of Phnom Penh (RUPP) has evolved significantly since its founding in 1960. Recent progress in various areas positions RUPP to drive Cambodia's socio-economic development through education, research, and community service. The Strategic Plan 2019-2023 outlines RUPP's vision to align with national goals and become a regional hub for intellectual and cultural development.",
-        Price: " 500\$ - 2500\$"),
+        Price: " 500\$ - 2500\$",
+        unifac: [
+          "Faculty of science ",
+          'Faculty of Engineering',
+          "Faculty of Social Sciences and Humanities",
+          'Faculty of Education',
+          "Faculty of Development Studies ",
+          'Institute of Foreign Languages',
+          'Institute for International Studies and Public Policy'
+        ]),
     RepoUni(
       imgUni: imageMIT,
       nameUni: "MIT University",
