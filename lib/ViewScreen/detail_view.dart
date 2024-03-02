@@ -99,7 +99,7 @@ class DetailUniView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               UniText(
-                label: "Programs:",
+                label: "Overview:",
                 fontweight: FontWeight.bold,
                 fontsize: 20,
               ),
@@ -110,7 +110,8 @@ class DetailUniView extends StatelessWidget {
             ],
           ),
           SizedBox(height: 10),
-          UniText(label: "Faculty:", fontweight: FontWeight.bold, fontsize: 20),
+          UniText(
+              label: "Programs:", fontweight: FontWeight.bold, fontsize: 20),
           GridView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -118,12 +119,12 @@ class DetailUniView extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 19,
                 mainAxisSpacing: 10,
-                childAspectRatio: 0.8),
+                childAspectRatio: 3),
             itemCount: repo.unifac.length,
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  Get.to(DetailFacultyView());
+                  // Get.to(DetailFacultyView());
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -132,17 +133,9 @@ class DetailUniView extends StatelessWidget {
                       color: colorgrey),
                   child: Column(
                     children: [
-                      Container(
-                        height: Get.height * 0.18,
-                        width: Get.width * 0.35,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.black),
-                      ),
-                      SizedBox(height: 5),
                       UniText(
                         label: repo.unifac[index],
-                        fontsize: 12,
+                        fontsize: 10,
                         fontweight: FontWeight.bold,
                       ),
                     ],

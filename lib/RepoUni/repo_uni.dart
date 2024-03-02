@@ -46,22 +46,35 @@ class RepoUni {
           'Institute for International Studies and Public Policy'
         ]),
     RepoUni(
-      imgUni: imageMIT,
-      nameUni: "MIT University",
-      CateImage: imageCode,
-      UniCateImg: imageMIT,
-      Overview:
-          "MIT, in Cambridge, USA, is a top-tier institution for science and technology education. Founded in 1861, it emphasizes innovation and hands-on learning. MIT's research spans AI to renewable energy, fostering creativity and entrepreneurship.",
-      Price: "54000\$+ ",
-    ),
+        imgUni: imageITC,
+        nameUni: "Institute of Technology of Cambodia",
+        CateImage: imageCode,
+        UniCateImg: imageITC,
+        Overview:
+            "The Institute of Technology of Cambodia, known for short as Sala Techno, is a higher education institution in Phnom Penh, Cambodia that trains students in science, technology and engineering. ",
+        Price: "200\$-9500\$ ",
+        unifac: [
+          "Faculty of Applied Science",
+          'Faculty of Civil Engineering,',
+          "Faculty of Chemical and Food Engineering,",
+          'Faculty of Electrical Engineering',
+          "Faculty of Geo-resources and Geotechnical Engineering ",
+          'Faculty of Hydrology and Water Resources Engineering',
+        ]),
     RepoUni(
-      imgUni: imageCADT,
-      nameUni: "Cambodia Academy Digital of Technology",
-      CateImage: imageArch,
-      UniCateImg: imageCADT,
-      Overview:
-          "CADT aims to be a national flagship research and education institution for Digital Technology and Innovation, nurturing digital talent and innovators to drive Cambodia toward a digital society.",
-      Price: "2500\$+ ",
-    )
+        imgUni: imageUHS,
+        nameUni: "University of Health Sciences",
+        CateImage: imageArch,
+        UniCateImg: imageUHS,
+        Overview:
+            "Originally established 1946, it was known as the School for Medical Officers. After a total abandonment during the Khmer Rouge regime, it resumed its ongoing medical training in 1980, and combined three sections in a single faculty (Medicine, Pharmacy, and Dentistry). After having its name changed multiple times during throughout the years, it settled on the University of Health Sciences in 1997. It is famously known as Sala Krahom, which translates literally as Red School.",
+        Price: "750\$-2,300\$",
+        unifac: [
+          "Faculty of Medicine",
+          'Faculty of Pharmacy',
+          "Faculty Public Health",
+          'Faculty of Dentistry',
+          "Technical School of Medical Care",
+        ])
   ];
 }

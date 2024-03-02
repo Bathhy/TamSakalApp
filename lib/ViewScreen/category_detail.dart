@@ -51,7 +51,7 @@ class CategoryDetailview extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
-                                  image: AssetImage(imageCADT),
+                                  image: AssetImage(imageUHS),
                                   fit: BoxFit.cover)),
                         ),
                         UniText(

@@ -37,7 +37,7 @@ class _HomescreenState extends State<Homescreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "University Pedia",
+          "Tam Sakal",
           style: GoogleFonts.nunito(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
@@ -83,7 +83,7 @@ class _HomescreenState extends State<Homescreen> {
           SizedBox(height: 15),
           UniText(
             label:
-                "University Pedia is a App for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",
+                "Tam Sakal is a App for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",
             color: Colors.black,
             fontsize: 20,
             fontweight: FontWeight.bold,

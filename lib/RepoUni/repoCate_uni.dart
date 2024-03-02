@@ -23,8 +23,11 @@ class CateUni {
       imgCateuni: imageCode,
       CateUniname: "Information Technology",
       category: "IT",
-      imagecate: [imageCADT, imageRUPP],
+      imagecate: [imageUHS, imageRUPP],
     ),
-    CateUni(imgCateuni: imageArch, CateUniname: "Architecture",category: "Architect"),
+    CateUni(
+        imgCateuni: imageArch,
+        CateUniname: "Architecture",
+        category: "Architect"),
   ];
 }
