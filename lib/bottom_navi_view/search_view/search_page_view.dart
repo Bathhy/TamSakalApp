@@ -109,7 +109,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget _DisplayUni() {
     return Expanded(
       child: ListView.separated(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
         separatorBuilder: (context, index) => SizedBox(
           height: 10,
         ),

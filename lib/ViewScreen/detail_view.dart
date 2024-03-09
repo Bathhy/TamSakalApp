@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/RepoUni/repo_uni.dart';
-import 'package:practiceloginlayout/ViewScreen/detail_faculty.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/controller/fav_uni_control.dart';
@@ -12,7 +11,7 @@ class DetailUniView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favcontroller _favcontrol = Get.find();
+    favcontroller _favcontrol = Get.find();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: myBlueColor,
@@ -25,11 +24,13 @@ class DetailUniView extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              _favcontrol.saveFavdb(repo);
+            },
             icon: GetBuilder<favcontroller>(
               builder: (_) {
                 return Icon(
-                  _favcontrol.toggleFavourite(repo)
+                  _favcontrol.favstat
                       ? Icons.favorite
                       : Icons.favorite_border_outlined,
                   color: Colors.white,
@@ -112,38 +113,58 @@ class DetailUniView extends StatelessWidget {
           SizedBox(height: 10),
           UniText(
               label: "Programs:", fontweight: FontWeight.bold, fontsize: 20),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 19,
-                mainAxisSpacing: 10,
-                childAspectRatio: 3),
-            itemCount: repo.unifac.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  // Get.to(DetailFacultyView());
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: colorgrey),
-                  child: Column(
+          // GridView.builder(
+          //   shrinkWrap: true,
+          //   physics: NeverScrollableScrollPhysics(),
+          //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //       crossAxisCount: 2,
+          //       crossAxisSpacing: 19,
+          //       mainAxisSpacing: 10,
+          //       childAspectRatio: 3),
+          //   itemCount: repo.unifac.length,
+          //   itemBuilder: (context, index) {
+          //     return InkWell(
+          //       onTap: () {
+          //         Get.to(DetailFacultyView());
+          //       },
+          //       child: Container(
+          //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          //         decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(20),
+          //             color: colorgrey),
+          //         child: Column(
+          //           children: [
+          //             UniText(
+          //               label: repo.unifac[index],
+          //               fontsize: 10,
+          //               fontweight: FontWeight.bold,
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     );
+          //   },
+          // )
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: repo.unifac.length,
+              itemBuilder: (context, index) {
+                final unidet = repo.unifac[index];
+                return Card(
+                  child: ExpansionTile(
+                    shape: Border.all(color: Colors.transparent),
+                    title: UniText(
+                      label: unidet,
+                    ),
                     children: [
                       UniText(
-                        label: repo.unifac[index],
-                        fontsize: 10,
-                        fontweight: FontWeight.bold,
+                        label: "Department of Broken heart",
+                        color: Colors.black,
                       ),
                     ],
                   ),
-                ),
-              );
-            },
-          )
+                );
+              })
         ],
       ),
     );

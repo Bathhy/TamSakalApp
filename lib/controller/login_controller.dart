@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
   var passhidden = true.obs;
+  var isLoggedIn = true.obs;
   var cpasshidden = true.obs;
   var lpasshidden = true.obs;
   Rx<User> user = User(email: "", password: "").obs;

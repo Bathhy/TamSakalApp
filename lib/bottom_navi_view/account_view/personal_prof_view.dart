@@ -23,9 +23,9 @@ class PersonalAccount extends StatelessWidget {
       ),
       body: Column(
         children: [
-          _profileNamecard(),
-          SizedBox(height: 20),
-          _personalinforcard()
+          // _profileNamecard(),
+          // SizedBox(height: 20),
+          // _personalinforcard()
         ],
       ),
     );

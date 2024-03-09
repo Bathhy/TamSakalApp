@@ -25,7 +25,7 @@ class _LoginpageState extends State<Loginpage> {
         centerTitle: true,
         backgroundColor: myBlueColor,
         title: UniText(
-            label: "University Pedia",
+            label: "Tam Sakal",
             color: Colors.white,
             fontsize: 20,
             fontweight: FontWeight.bold),

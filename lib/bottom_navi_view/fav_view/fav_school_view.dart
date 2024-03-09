@@ -10,7 +10,7 @@ class FavSchool extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favcontroller _favcontrol = Get.find();
+    final favcontroller _favcontrol = Get.put(favcontroller());
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
