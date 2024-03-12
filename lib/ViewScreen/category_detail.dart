@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
+import 'package:practiceloginlayout/controller/search_control.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class CategoryDetailview extends StatelessWidget {
@@ -9,6 +10,7 @@ class CategoryDetailview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SearchingController _control = Get.find();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: myBlueColor,
@@ -21,6 +23,7 @@ class CategoryDetailview extends StatelessWidget {
               UniText(
                 label: "Information Technology",
                 fontsize: 20,
+                fontweight: FontWeight.bold,
               ),
             ],
           ),

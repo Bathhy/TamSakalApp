@@ -7,7 +7,6 @@ import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/component_project/component_profil.dart';
 import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
-import 'package:practiceloginlayout/singup/sign_up.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class ProfileView extends StatelessWidget {
@@ -15,78 +14,55 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AuthController _acccontrol = Get.find();
+    final AuthController _acccontrol = Get.put(AuthController());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Obx(
-            () => _acccontrol.isLoggedIn.value
-                ? Center(
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          hamsad,
-                          fit: BoxFit.fill,
-                        ),
-                        UniText(
-                          label: "Please Login or Sign Up to access this Data",
-                          color: Colors.black,
-                          fontsize: 15,
-                          fontweight: FontWeight.bold,
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Get.to(Loginpage());
-                              },
-                              child: Container(
-                                width: Get.width * 0.3,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  color: myBlueColor,
-                                  borderRadius: BorderRadius.circular(25),
-                                ),
-                                child: Center(
-                                  child: UniText(
-                                    label: "Login",
-                                    color: Colors.white,
-                                    fontsize: 20,
-                                  ),
+          Obx(() => _acccontrol.isLoggedIn.value
+              ? _body()
+              : Center(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        hamsad,
+                        fit: BoxFit.fill,
+                      ),
+                      UniText(
+                        label: "Please Login to access this Data",
+                        color: Colors.black,
+                        fontsize: 15,
+                        fontweight: FontWeight.bold,
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Get.offAll(Loginpage());
+                            },
+                            child: Container(
+                              width: Get.width * 0.3,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: myBlueColor,
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              child: Center(
+                                child: UniText(
+                                  label: "Login",
+                                  color: Colors.white,
+                                  fontsize: 20,
                                 ),
                               ),
                             ),
-                            SizedBox(width: 20),
-                            InkWell(
-                              onTap: () {
-                                Get.to(Signupscreen());
-                              },
-                              child: Container(
-                                width: Get.width * 0.3,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  color: myBlueColor,
-                                  borderRadius: BorderRadius.circular(25),
-                                ),
-                                child: Center(
-                                  child: UniText(
-                                    label: "Sign Up",
-                                    color: Colors.white,
-                                    fontsize: 20,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                : _body(),
-          ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )),
         ],
       ),
     );

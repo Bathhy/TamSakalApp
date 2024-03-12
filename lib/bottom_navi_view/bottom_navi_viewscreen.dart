@@ -11,39 +11,43 @@ class BottomNaviView extends StatelessWidget {
     return Scaffold(
       body: Obx(() => _botcontroller.Screen[_botcontroller.currentInd.value]),
       bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-          backgroundColor: myBlueColor,
-          currentIndex: _botcontroller.currentInd.value,
-          onTap: (index) {
-            _botcontroller.pageclick(index);
-          },
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(
-              icon: compoBottomIcon(icon: Icons.home_outlined),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: compoBottomIcon(
-                icon: Icons.favorite_outline_outlined,
+        () => ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          child: BottomNavigationBar(
+            backgroundColor: myBlueColor,
+            currentIndex: _botcontroller.currentInd.value,
+            onTap: (index) {
+              _botcontroller.pageclick(index);
+            },
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.grey,
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                icon: compoBottomIcon(icon: Icons.home_outlined),
+                label: "",
               ),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: compoBottomIcon(
-                icon: Icons.search,
+              BottomNavigationBarItem(
+                icon: compoBottomIcon(
+                  icon: Icons.favorite_outline_outlined,
+                ),
+                label: "",
               ),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: compoBottomIcon(
-                icon: Icons.person_2_outlined,
+              BottomNavigationBarItem(
+                icon: compoBottomIcon(
+                  icon: Icons.search,
+                ),
+                label: "",
               ),
-              label: "",
-            ),
-          ],
+              BottomNavigationBarItem(
+                icon: compoBottomIcon(
+                  icon: Icons.person_2_outlined,
+                ),
+                label: "",
+              ),
+            ],
+          ),
         ),
       ),
     );

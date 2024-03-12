@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class RepoUni {

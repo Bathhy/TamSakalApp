@@ -7,8 +7,10 @@ class textformNoIcon extends StatelessWidget {
   textformNoIcon({
     super.key,
     this.label,
+    this.controller,
   });
   final String? label;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,9 +25,11 @@ class textformNoIcon extends StatelessWidget {
             blurRadius: 5,
             offset: const Offset(0, 3),
           ),
+          
         ],
       ),
       child: TextFormField(
+        controller: controller,
         decoration: InputDecoration(
           hintText: label,
           contentPadding:
@@ -42,9 +46,11 @@ class textformfieldWithIcon extends StatelessWidget {
     super.key,
     required AuthController authController,
     this.label,
+    this.controller,
   }) : _authController = authController;
 
   final AuthController _authController;
+  final TextEditingController? controller;
   final String? label;
   @override
   Widget build(BuildContext context) {
@@ -64,6 +70,7 @@ class textformfieldWithIcon extends StatelessWidget {
       ),
       child: Obx(
         () => TextFormField(
+          controller: controller,
           obscureText: _authController.lpasshidden.value,
           decoration: InputDecoration(
             hintText: label,
@@ -88,7 +95,7 @@ class textformfieldWithIcon extends StatelessWidget {
 }
 
 //Drawer Component
-// 
+//
 
 class CompoDrawer extends StatelessWidget {
   CompoDrawer({

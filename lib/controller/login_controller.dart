@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
   var passhidden = true.obs;
-  var isLoggedIn = true.obs;
+  var isLoggedIn = false.obs;
   var cpasshidden = true.obs;
   var lpasshidden = true.obs;
   Rx<User> user = User(email: "", password: "").obs;
@@ -18,7 +18,9 @@ class AuthController extends GetxController {
   final Lpassword = TextEditingController(text: "idk");
   final TextEditingController passwordController = TextEditingController();
   void register(String email, String passsword, String conpassword) async {
-    if (email == "" || passsword == "" || conpassword == "") {
+    if (Remail.text.isEmpty ||
+        Rpassword.text.isEmpty ||
+        RcPassword.text.isEmpty) {
       Get.snackbar(
         "Error Signup",
         "Try again",
@@ -43,7 +45,7 @@ class AuthController extends GetxController {
   }
 
   void login(String email, String passsword) async {
-    if (email == "" || passsword == "") {
+    if (Lemail.text.isEmpty || Lpassword.text.isEmpty) {
       Get.snackbar("Error Login", "No account");
     } else {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -52,6 +54,7 @@ class AuthController extends GetxController {
       if (email == storeemail || passsword == storepassword) {
         Get.offAll(() => BottomNaviView());
         prefs.setBool('islogin', true);
+        isLoggedIn.value = true;
       } else {
         Get.snackbar("Not found", "Couldn't find account",
             backgroundColor: Colors.red,

@@ -20,32 +20,4 @@ class SearchingController extends GetxController {
     search("");
     super.onInit();
   }
-
-  // _dataList.isEmpty
-        // ? Center(
-        //     child: Column(
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //       children: [
-        //         Icon(
-        //           Icons.search_rounded,
-        //           size: 150,
-        //           color: Colors.grey[400],
-        //         ),
-        //         Text(
-        //           'Search not Found',
-        //           style: TextStyle(
-        //               color: Colors.black,
-        //               fontWeight: FontWeight.bold,
-        //               fontSize: 20),
-        //         ),
-        //         Text(
-        //           'Try searching the item with \n a different keyword.',
-        //           style: TextStyle(
-        //               color: Colors.black54,
-        //               fontWeight: FontWeight.bold,
-        //               fontSize: 15),
-        //         ),
-        //       ],
-        //     ),
-        //   )
 }

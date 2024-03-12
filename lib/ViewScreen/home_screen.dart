@@ -41,7 +41,7 @@ class _HomescreenState extends State<Homescreen> {
           style: GoogleFonts.nunito(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
-        backgroundColor: Color.fromARGB(255, 4, 6, 168),
+        backgroundColor: myBlueColor,
         actions: [
           Stack(
             children: [

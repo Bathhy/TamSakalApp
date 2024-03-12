@@ -4,6 +4,8 @@ import 'package:practiceloginlayout/RepoUni/repo_uni.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/controller/fav_uni_control.dart';
+import 'package:practiceloginlayout/controller/login_controller.dart';
+import 'package:practiceloginlayout/login/loginpage.dart';
 
 class DetailUniView extends StatelessWidget {
   final RepoUni repo;
@@ -11,7 +13,8 @@ class DetailUniView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    favcontroller _favcontrol = Get.find();
+    final favcontroller _favcontrol = Get.put(favcontroller());
+    final AuthController _authcontrol = Get.put(AuthController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: myBlueColor,
@@ -23,21 +26,46 @@ class DetailUniView extends StatelessWidget {
           color: Colors.white,
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              _favcontrol.saveFavdb(repo);
-            },
-            icon: GetBuilder<favcontroller>(
-              builder: (_) {
-                return Icon(
-                  _favcontrol.favstat
-                      ? Icons.favorite
-                      : Icons.favorite_border_outlined,
-                  color: Colors.white,
-                );
-              },
-            ),
-          )
+          _authcontrol.isLoggedIn.value
+              ? IconButton(
+                  onPressed: () {
+                    _favcontrol.saveFavdb(repo);
+                  },
+                  icon: GetBuilder<favcontroller>(
+                    builder: (_) {
+                      return Icon(
+                        _favcontrol.favstat
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        color: Colors.white,
+                      );
+                    },
+                  ),
+                )
+              : IconButton(
+                  onPressed: () {
+                    Get.snackbar(
+                      'Please Login',
+                      'You need to Login to add to favourite',
+                      snackPosition: SnackPosition.BOTTOM,
+                      backgroundColor: myBlueColor,
+                      colorText: Colors.white,
+                      mainButton: TextButton(
+                        onPressed: () {
+                          Get.offAll(Loginpage());
+                        },
+                        child: UniText(
+                          label: "Login",
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.favorite_outline_outlined,
+                    color: Colors.white,
+                  ),
+                )
         ],
       ),
       body: ListView(

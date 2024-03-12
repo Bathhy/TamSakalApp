@@ -14,7 +14,7 @@ class Signupscreen extends StatefulWidget {
 }
 
 class _SignupscreenState extends State<Signupscreen> {
-  final AuthController authController = Get.find();
+  final AuthController authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +64,8 @@ class _SignupscreenState extends State<Signupscreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       textformNoIcon(
-                        label: "Email",
+                        controller: authController.Remail,
+                        // label: "Email",
                       )
                     ],
                   ),
@@ -73,6 +74,7 @@ class _SignupscreenState extends State<Signupscreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       textformfieldWithIcon(
+                        controller: authController.Rpassword,
                         authController: authController,
                         label: "Password",
                       )
@@ -98,6 +100,7 @@ class _SignupscreenState extends State<Signupscreen> {
                         ),
                         child: Obx(
                           () => TextFormField(
+                            controller: authController.RcPassword,
                             obscureText: authController.cpasshidden.value,
                             decoration: InputDecoration(
                               hintText: "Confirm password",
@@ -129,7 +132,13 @@ class _SignupscreenState extends State<Signupscreen> {
                       SizedBox(
                         width: 350,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            authController.register(
+                                authController.Remail.text,
+                                authController.Rpassword.text,
+                                authController.RcPassword.text);
+                            authController.ClearRegister();
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(

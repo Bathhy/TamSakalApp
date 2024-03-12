@@ -66,7 +66,10 @@ class _LoginpageState extends State<Loginpage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      textformNoIcon(label: "Email"),
+                      textformNoIcon(
+                        label: "Email",
+                        controller: _authController.Lemail,
+                      ),
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -74,7 +77,10 @@ class _LoginpageState extends State<Loginpage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       textformfieldWithIcon(
-                          authController: _authController, label: "Password"),
+                        authController: _authController,
+                        label: "Password",
+                        controller: _authController.Lpassword,
+                      ),
                     ],
                   ),
                   const SizedBox(height: 30),
@@ -102,7 +108,7 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 
-  Row _signinButton() {
+  Widget _signinButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -110,7 +116,10 @@ class _LoginpageState extends State<Loginpage> {
           width: 350,
           child: ElevatedButton(
             onPressed: () {
-              Get.offAll(() => BottomNaviView());
+              _authController.login(
+                  _authController.Remail.text, _authController.RcPassword.text);
+              _authController.clearlogin();
+              // Get.offAll(() => BottomNaviView());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,

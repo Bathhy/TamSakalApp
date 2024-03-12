@@ -29,5 +29,6 @@ class CateUni {
         imgCateuni: imageArch,
         CateUniname: "Architecture",
         category: "Architect"),
+        
   ];
 }
