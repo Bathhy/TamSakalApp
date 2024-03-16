@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:practiceloginlayout/RepoUni/repo_uni.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
@@ -26,23 +27,8 @@ class DetailUniView extends StatelessWidget {
           color: Colors.white,
         ),
         actions: [
-          _authcontrol.isLoggedIn.value
+          Obx(() => _authcontrol.isLoggedIn.value
               ? IconButton(
-                  onPressed: () {
-                    _favcontrol.saveFavdb(repo);
-                  },
-                  icon: GetBuilder<favcontroller>(
-                    builder: (_) {
-                      return Icon(
-                        _favcontrol.favstat
-                            ? Icons.favorite
-                            : Icons.favorite_border_outlined,
-                        color: Colors.white,
-                      );
-                    },
-                  ),
-                )
-              : IconButton(
                   onPressed: () {
                     Get.snackbar(
                       'Please Login',
@@ -66,6 +52,21 @@ class DetailUniView extends StatelessWidget {
                     color: Colors.white,
                   ),
                 )
+              : IconButton(
+                  onPressed: () {
+                    _favcontrol.saveFavdb(repo);
+                  },
+                  icon: GetBuilder<favcontroller>(
+                    builder: (_) {
+                      return Icon(
+                        _favcontrol.favstat
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        color: Colors.white,
+                      );
+                    },
+                  ),
+                ))
         ],
       ),
       body: ListView(

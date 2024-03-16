@@ -13,7 +13,11 @@ class PersonalAccount extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: myBlueColor,
         centerTitle: true,
-        title: UniText(label: "Account Setting", color: Colors.white),
+        title: UniText(
+          label: "Account Setting",
+          color: Colors.white,
+          fontweight: FontWeight.bold,
+        ),
         leading: IconButton(
             onPressed: () {
               Get.back();

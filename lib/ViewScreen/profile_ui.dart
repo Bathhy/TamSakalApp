@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
@@ -20,8 +21,7 @@ class ProfileView extends StatelessWidget {
       body: Column(
         children: [
           Obx(() => _acccontrol.isLoggedIn.value
-              ? _body()
-              : Center(
+              ? Center(
                   child: Column(
                     children: [
                       Image.asset(
@@ -62,7 +62,8 @@ class ProfileView extends StatelessWidget {
                       ),
                     ],
                   ),
-                )),
+                )
+              : _body()),
         ],
       ),
     );

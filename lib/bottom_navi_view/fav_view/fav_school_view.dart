@@ -14,19 +14,19 @@ class FavSchool extends StatelessWidget {
     final favcontroller _favcontrol = Get.put(favcontroller());
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            UniText(
-              label: "Favourite University",
-              color: myBlueColor,
-              fontweight: FontWeight.bold,
-              fontsize: 25,
-            ),
-            Obx(
-              () => _favcontrol.FavDb.isEmpty
+      body: Obx(
+        () => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              UniText(
+                label: "Favourite University",
+                color: myBlueColor,
+                fontweight: FontWeight.bold,
+                fontsize: 25,
+              ),
+              _favcontrol.FavDb.isEmpty
                   ? Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -157,8 +157,8 @@ class FavSchool extends StatelessWidget {
                         ),
                       ),
                     ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
