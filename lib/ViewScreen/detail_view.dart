@@ -8,14 +8,26 @@ import 'package:practiceloginlayout/controller/fav_uni_control.dart';
 import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
 
-class DetailUniView extends StatelessWidget {
+class DetailUniView extends StatefulWidget {
   final RepoUni repo;
   const DetailUniView(this.repo);
 
   @override
+  State<DetailUniView> createState() => _DetailUniViewState();
+}
+
+class _DetailUniViewState extends State<DetailUniView> {
+  final favcontroller _favcontrol = Get.put(favcontroller());
+  final AuthController _authcontrol = Get.put(AuthController());
+
+  @override
+  void initState() {
+    _favcontrol.initIcons(widget.repo);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final favcontroller _favcontrol = Get.put(favcontroller());
-    final AuthController _authcontrol = Get.put(AuthController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: myBlueColor,
@@ -54,7 +66,7 @@ class DetailUniView extends StatelessWidget {
                 )
               : IconButton(
                   onPressed: () {
-                    _favcontrol.saveFavdb(repo);
+                    _favcontrol.saveFavdb(widget.repo);
                   },
                   icon: GetBuilder<favcontroller>(
                     builder: (_) {
@@ -83,11 +95,12 @@ class DetailUniView extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                    image: AssetImage(repo.UniCateImg), fit: BoxFit.cover)),
+                    image: AssetImage(widget.repo.UniCateImg),
+                    fit: BoxFit.cover)),
           ),
           SizedBox(height: 15),
           UniText(
-            label: repo.nameUni,
+            label: widget.repo.nameUni,
             fontsize: 20,
             fontweight: FontWeight.bold,
           ),
@@ -110,7 +123,7 @@ class DetailUniView extends StatelessWidget {
                     Icons.monetization_on_outlined,
                     color: Colors.black,
                   ),
-                  UniText(label: repo.Price),
+                  UniText(label: widget.repo.Price),
                 ],
               ),
               Row(
@@ -134,7 +147,7 @@ class DetailUniView extends StatelessWidget {
                 fontsize: 20,
               ),
               UniText(
-                label: repo.Overview,
+                label: widget.repo.Overview,
                 fontsize: 15,
               ),
             ],
@@ -176,9 +189,9 @@ class DetailUniView extends StatelessWidget {
           // )
           ListView.builder(
               shrinkWrap: true,
-              itemCount: repo.unifac.length,
+              itemCount: widget.repo.unifac.length,
               itemBuilder: (context, index) {
-                final unidet = repo.unifac[index];
+                final unidet = widget.repo.unifac[index];
                 return Card(
                   child: ExpansionTile(
                     shape: Border.all(color: Colors.transparent),

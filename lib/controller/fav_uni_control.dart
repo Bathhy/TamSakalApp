@@ -75,12 +75,14 @@ class favcontroller extends GetxController {
 
   void deleteFav() {
     _favdb.removeByKey("Favlist");
+
     FavDb.clear();
   }
 
   void deletebyIndex(RepoUni deleteUni) async {
     final favRemoval = await _favdb.removefav(deleteUni);
     if (favRemoval) {
+      print("---------xxxxDelete Succcesfull xx-----");
       FavDb.remove(deleteUni);
       update();
     }

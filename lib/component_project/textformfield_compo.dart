@@ -8,9 +8,19 @@ class textformNoIcon extends StatelessWidget {
     super.key,
     this.label,
     this.controller,
+    this.obscureTextl = false,
+    this.icondata,
+    this.colorIcon,
+    this.iconsize,
+    this.onpress,
   });
   final String? label;
+  final bool obscureTextl;
   final TextEditingController? controller;
+  final IconData? icondata;
+  final Color? colorIcon;
+  final double? iconsize;
+  final VoidCallback? onpress;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,16 +35,24 @@ class textformNoIcon extends StatelessWidget {
             blurRadius: 5,
             offset: const Offset(0, 3),
           ),
-          
         ],
       ),
       child: TextFormField(
+        obscureText: obscureTextl,
         controller: controller,
         decoration: InputDecoration(
           hintText: label,
           contentPadding:
               EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
           border: InputBorder.none,
+          suffixIcon: IconButton(
+            onPressed: onpress,
+            icon: Icon(
+              icondata,
+              color: colorIcon,
+              size: iconsize,
+            ),
+          ),
         ),
       ),
     );

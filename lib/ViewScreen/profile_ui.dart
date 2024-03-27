@@ -93,7 +93,7 @@ class _body extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 40, left: 20),
                 child: UniText(
                     label: "Welcome Sam",
-                    color: Colors.white,
+                    color: colorGold,
                     fontweight: FontWeight.bold,
                     fontsize: 30),
               ),

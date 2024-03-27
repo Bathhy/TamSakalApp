@@ -34,19 +34,19 @@ class FavSchool extends StatelessWidget {
                           Icon(
                             Icons.favorite,
                             size: 150,
-                            color: Colors.grey[400],
+                            color: colorGold,
                           ),
                           Text(
                             "No favourite University yet",
                             style: GoogleFonts.nunito(
-                                color: Colors.black,
+                                color: colorGold,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20),
                           ),
                           Text(
                             'Try to add your favourite University here',
                             style: GoogleFonts.nunito(
-                                color: Colors.black54,
+                                color: colorGold,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
                           ),
@@ -67,11 +67,10 @@ class FavSchool extends StatelessWidget {
                                 motion: BehindMotion(),
                                 extentRatio: 1,
                                 children: [
-                                  SizedBox(
-                                    width: 1,
-                                  ),
                                   SlidableAction(
-                                    onPressed: (context) {},
+                                    onPressed: (context) {
+                                      _favcontrol.deletebyIndex(favUni);
+                                    },
                                     backgroundColor: Colors.white,
                                     icon: Icons.delete,
                                     foregroundColor: Colors.red,

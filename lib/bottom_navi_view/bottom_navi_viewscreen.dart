@@ -21,7 +21,7 @@ class BottomNaviView extends StatelessWidget {
               _botcontroller.pageclick(index);
             },
             selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.yellow,
+            unselectedItemColor: colorGold,
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(

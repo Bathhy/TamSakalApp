@@ -40,19 +40,19 @@ class _SearchPageState extends State<SearchPage> {
                         Icon(
                           Icons.search_rounded,
                           size: 150,
-                          color: Colors.grey[400],
+                          color: colorGold,
                         ),
                         Text(
                           'Search not Found',
                           style: GoogleFonts.nunito(
-                              color: Colors.black,
+                              color: colorGold,
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
                         ),
                         Text(
                           'Try searching the item with \n a different keyword.',
                           style: GoogleFonts.nunito(
-                              color: Colors.black54,
+                              color: colorGold,
                               fontWeight: FontWeight.bold,
                               fontSize: 15),
                         ),
