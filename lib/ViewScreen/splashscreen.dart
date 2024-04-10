@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
-import 'package:practiceloginlayout/login/loginpage.dart';
+import 'package:practiceloginlayout/controller/splash_control.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
 class Splashscreen extends StatefulWidget {
@@ -14,12 +14,20 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
+  final SplashscreenController _splashcontrol = Get.find();
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+   
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 2), () {
-      Get.offAll(Loginpage());
+     Future.delayed(Duration(seconds: 1), () {
+      _splashcontrol.checkLoginStat();
     });
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: myBlueColor,
       body: Column(
         children: [
@@ -32,7 +40,10 @@ class _SplashscreenState extends State<Splashscreen> {
                 image: AssetImage(imageTSPNG),
               ),
             ),
-          )
+          ),
+          // Container(
+          //   child: ,
+          // )
         ],
       ),
     );

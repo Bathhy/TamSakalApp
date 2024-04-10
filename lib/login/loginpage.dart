@@ -45,47 +45,35 @@ class _LoginpageState extends State<Loginpage> {
                 ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: const Text(
-                      "Login to your Account",
-                      style: TextStyle(
-                        color: myBlueColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Login to your Account",
+                  style: TextStyle(
+                    color: myBlueColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Column(
+                  children: [
+                    textformNoIcon(
+                      label: "Email",
+                      controller: _authController.Lemail,
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      textformNoIcon(
-                        label: "Email",
-                        controller: _authController.Lemail,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      textformfieldWithIcon(
-                        authController: _authController,
-                        label: "Password",
-                        controller: _authController.Lpassword,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  _signinButton(),
-                ],
-              ),
+                    const SizedBox(height: 20),
+                    textformfieldWithIcon(
+                      authController: _authController,
+                      label: "Password",
+                      controller: _authController.Lpassword,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+                _signinButton(),
+              ],
             ),
             Container(
               padding: const EdgeInsets.only(bottom: 10),
@@ -116,7 +104,7 @@ class _LoginpageState extends State<Loginpage> {
           child: ElevatedButton(
             onPressed: () {
               _authController.login(
-                  _authController.Remail.text, _authController.RcPassword.text);
+                  _authController.Lemail.text, _authController.Lpassword.text);
               _authController.clearlogin();
               // Get.offAll(() => BottomNaviView());
             },

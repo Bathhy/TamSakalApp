@@ -10,18 +10,31 @@ import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
+class ProfileView extends StatefulWidget {
+  ProfileView({super.key});
+
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  final AuthController authcontrol = Get.put(AuthController());
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   // String name  = await LocalAuthTS.instance.
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    final AuthController _acccontrol = Get.put(AuthController());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Obx(() => _acccontrol.isLoggedIn.value
-              ? Center(
+          Obx(() => authcontrol.isLoggedIn.isFalse
+              ? _body()
+              : Center(
                   child: Column(
                     children: [
                       Image.asset(
@@ -29,8 +42,8 @@ class ProfileView extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                       UniText(
-                        label: "Please Login to access this Data",
-                        color: Colors.black,
+                        label: "Please Login",
+                        color: colorGold,
                         fontsize: 15,
                         fontweight: FontWeight.bold,
                       ),
@@ -62,8 +75,7 @@ class ProfileView extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
-              : _body()),
+                )),
         ],
       ),
     );
@@ -77,6 +89,7 @@ class _body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AuthController _acccontrol = Get.put(AuthController());
     return Column(
       children: [
         Container(
@@ -92,7 +105,7 @@ class _body extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 40, left: 20),
                 child: UniText(
-                    label: "Welcome Sam",
+                    label: "Welcome",
                     color: colorGold,
                     fontweight: FontWeight.bold,
                     fontsize: 30),
@@ -185,12 +198,12 @@ class _body extends StatelessWidget {
                 height: 10,
               ),
               CompoProfilView(
-                label: "Logout",
-                icon: Icons.logout,
-                iconbutton: Icons.arrow_forward_ios,
-                iconbuttoncolor: Colors.red,
-                iconcolor: Colors.red,
-              ),
+                  label: "Logout",
+                  icon: Icons.logout,
+                  iconbutton: Icons.arrow_forward_ios,
+                  iconbuttoncolor: Colors.red,
+                  iconcolor: Colors.red,
+                  onpress: () => _acccontrol.logout()),
             ],
           ),
         ),

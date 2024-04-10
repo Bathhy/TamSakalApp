@@ -39,8 +39,23 @@ class _DetailUniViewState extends State<DetailUniView> {
           color: Colors.white,
         ),
         actions: [
-          Obx(() => _authcontrol.isLoggedIn.value
+          Obx(() => _authcontrol.isLoggedIn.isFalse
               ? IconButton(
+                  onPressed: () {
+                    _favcontrol.saveFavdb(widget.repo);
+                  },
+                  icon: GetBuilder<favcontroller>(
+                    builder: (_) {
+                      return Icon(
+                        _favcontrol.favstat
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        color: Colors.white,
+                      );
+                    },
+                  ),
+                )
+              : IconButton(
                   onPressed: () {
                     Get.snackbar(
                       'Please Login',
@@ -62,21 +77,6 @@ class _DetailUniViewState extends State<DetailUniView> {
                   icon: Icon(
                     Icons.favorite_outline_outlined,
                     color: Colors.white,
-                  ),
-                )
-              : IconButton(
-                  onPressed: () {
-                    _favcontrol.saveFavdb(widget.repo);
-                  },
-                  icon: GetBuilder<favcontroller>(
-                    builder: (_) {
-                      return Icon(
-                        _favcontrol.favstat
-                            ? Icons.favorite
-                            : Icons.favorite_border_outlined,
-                        color: Colors.white,
-                      );
-                    },
                   ),
                 ))
         ],
@@ -155,38 +155,6 @@ class _DetailUniViewState extends State<DetailUniView> {
           SizedBox(height: 10),
           UniText(
               label: "Programs:", fontweight: FontWeight.bold, fontsize: 20),
-          // GridView.builder(
-          //   shrinkWrap: true,
-          //   physics: NeverScrollableScrollPhysics(),
-          //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //       crossAxisCount: 2,
-          //       crossAxisSpacing: 19,
-          //       mainAxisSpacing: 10,
-          //       childAspectRatio: 3),
-          //   itemCount: repo.unifac.length,
-          //   itemBuilder: (context, index) {
-          //     return InkWell(
-          //       onTap: () {
-          //         Get.to(DetailFacultyView());
-          //       },
-          //       child: Container(
-          //         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          //         decoration: BoxDecoration(
-          //             borderRadius: BorderRadius.circular(20),
-          //             color: colorgrey),
-          //         child: Column(
-          //           children: [
-          //             UniText(
-          //               label: repo.unifac[index],
-          //               fontsize: 10,
-          //               fontweight: FontWeight.bold,
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // )
           ListView.builder(
               shrinkWrap: true,
               itemCount: widget.repo.unifac.length,

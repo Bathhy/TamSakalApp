@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
 import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
+import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:practiceloginlayout/model/model_user.dart';
+import 'package:practiceloginlayout/store_key/storing_key_value.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
@@ -69,7 +72,7 @@ class AuthController extends GetxController {
         isLoggedIn.value = true;
         print('After login: isLoggedIn = ${isLoggedIn.value}');
         Get.offAll(() => BottomNaviView());
-        prefs.setBool('islogin', true);
+        prefs.setBool(loginkey, true);
       } else {
         Get.snackbar("Not found", "Couldn't find account",
             icon: Icon(
@@ -110,4 +113,10 @@ class AuthController extends GetxController {
   void hidecslogin() {
     cpasshidden.value = !cpasshidden.value;
   }
+
+  void logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove(loginkey);
+  }
+
 }

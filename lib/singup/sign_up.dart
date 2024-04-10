@@ -57,9 +57,9 @@ class _SignupscreenState extends State<Signupscreen> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 16),
                   textformNoIcon(
-                    label: "UserName",
+                    // controller: authController.RUsername,
+                    label: "Name",
                   ),
                   const SizedBox(height: 16),
                   textformNoIcon(
@@ -96,44 +96,6 @@ class _SignupscreenState extends State<Signupscreen> {
                       ],
                     ),
                   ),
-                  // Container(
-                  //   width: 350,
-                  //   decoration: BoxDecoration(
-                  //     color: Colors.white,
-                  //     borderRadius: BorderRadius.circular(20),
-                  //     boxShadow: [
-                  //       BoxShadow(
-                  //         color: myBlueColor.withOpacity(0.3),
-                  //         spreadRadius: 2,
-                  //         blurRadius: 5,
-                  //         offset: const Offset(0, 3),
-                  //       ),
-                  //     ],
-                  //   ),
-                  //   child: Obx(
-                  //     () => TextFormField(
-                  //       controller: authController.RcPassword,
-                  //       obscureText: authController.cpasshidden.value,
-                  //       decoration: InputDecoration(
-                  //         hintText: "Confirm password",
-                  //         suffixIcon: InkWell(
-                  //           child: Icon(
-                  //             authController.cpasshidden.value
-                  //                 ? Icons.visibility_off
-                  //                 : Icons.visibility,
-                  //             color: Colors.grey,
-                  //           ),
-                  //           onTap: () {
-                  //             authController.hidecslogin();
-                  //           },
-                  //         ),
-                  //         contentPadding:
-                  //             EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                  //         border: InputBorder.none,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   const SizedBox(height: 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -144,10 +106,11 @@ class _SignupscreenState extends State<Signupscreen> {
                         child: ElevatedButton(
                           onPressed: () {
                             authController.register(
-                                authController.Remail.text,
-                                authController.Rpassword.text,
-                                authController.RcPassword.text);
-                            authController.ClearRegister();
+                              authController.Remail.text,
+                              authController.Rpassword.text,
+                              authController.RcPassword.text,
+                            );
+                            // authController.ClearRegister();
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,

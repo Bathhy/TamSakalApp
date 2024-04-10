@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:practiceloginlayout/RepoUni/repo_uni.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -9,7 +8,7 @@ class TamsakalDB {
   TamsakalDB._internal();
   Future<SharedPreferences> _getSharePref() async =>
       await SharedPreferences.getInstance();
-
+// save fav
   Future<bool> setFavUni(RepoUni repo) async {
     final favUni = await getFav();
     final isexit =
