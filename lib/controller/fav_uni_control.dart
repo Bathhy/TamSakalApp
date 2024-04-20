@@ -5,8 +5,8 @@ import 'package:practiceloginlayout/RepoUni/repo_uni.dart';
 
 class favcontroller extends GetxController {
   final TamsakalDB _favdb = TamsakalDB.instance;
-  RxList<RepoUni> universities = <RepoUni>[].obs;
-  List<RepoUni> Unidata = RepoUni.repouniver;
+  // RxList<RepoUni> universities = <RepoUni>[].obs;
+  // List<RepoUni> Unidata = RepoUni.repouniver;
   final FavDb = <RepoUni>[].obs;
   var favstat = false;
 
