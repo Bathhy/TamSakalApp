@@ -60,6 +60,11 @@ class _LoginpageState extends State<Loginpage> {
                 Column(
                   children: [
                     textformNoIcon(
+                      controller: _authController.LUsername,
+                      label: "Name",
+                    ),
+                    const SizedBox(height: 20),
+                    textformNoIcon(
                       label: "Email",
                       controller: _authController.Lemail,
                     ),
@@ -104,7 +109,9 @@ class _LoginpageState extends State<Loginpage> {
           child: ElevatedButton(
             onPressed: () {
               _authController.login(
-                  _authController.Lemail.text, _authController.Lpassword.text);
+                  _authController.Lemail.text,
+                  _authController.Lpassword.text,
+                  _authController.LUsername.text);
               _authController.clearlogin();
               // Get.offAll(() => BottomNaviView());
             },

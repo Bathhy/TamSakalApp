@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
 import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:practiceloginlayout/model/model_user.dart';
@@ -12,15 +11,21 @@ class AuthController extends GetxController {
   var cpasshidden = true.obs;
   var lpasshidden = true.obs;
   RxBool isLoggedIn = false.obs;
-  Rx<User> user = User(email: "", password: "").obs;
+  RxString emailuser = ''.obs;
+  RxString Nameuser = ''.obs;
+  Rx<User> user = User(email: "", password: "", userName: "").obs;
   final Remail = TextEditingController(text: "messi@gmail.com");
   final Rpassword = TextEditingController(text: "idk");
   final RcPassword = TextEditingController(text: "idk");
+  final RUsername = TextEditingController();
+  final LUsername = TextEditingController();
   final Lemail = TextEditingController(text: "messi@gmail.com");
   final Lpassword = TextEditingController(text: "idk");
   final TextEditingController passwordController = TextEditingController();
-  void register(String email, String passsword, String conpassword) async {
-    if (email == "" || passsword == "" || conpassword == "") {
+
+  void register(String email, String passsword, String conpassword,
+      String userName) async {
+    if (email == "" || passsword == "" || conpassword == "" || userName == "") {
       Get.snackbar(
         "Error Signup",
         "Try again",
@@ -33,10 +38,11 @@ class AuthController extends GetxController {
         duration: const Duration(seconds: 1),
       );
     } else {
-      user.value = User(email: email, password: passsword);
+      user.value = User(email: email, password: passsword, userName: userName);
       SharedPreferences pref = await SharedPreferences.getInstance();
       pref.setString('email', email);
       pref.setString('password', passsword);
+      pref.setString('userName', userName);
       isLoggedIn.value = true;
 
       print('After login: isLoggedIn = ${isLoggedIn.value}');
@@ -54,8 +60,23 @@ class AuthController extends GetxController {
     }
   }
 
-  void login(String email, String passsword) async {
-    if (email == "" || passsword == "") {
+  void getUserInfo() async {
+    try {
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      String? storeemail = pref.getString('email');
+      String? storeUsername = pref.getString('userName');
+      emailuser.value = storeemail ?? '';
+      Nameuser.value = storeUsername ?? '';
+
+      print("Email: $storeemail");
+      print("Email: $storeUsername");
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void login(String email, String passsword, String userName) async {
+    if (email == "" || passsword == "" || userName == "") {
       Get.snackbar("Error Login", "No account",
           icon: Icon(
             Icons.error_outline,
@@ -68,7 +89,10 @@ class AuthController extends GetxController {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       final storeemail = prefs.getString('email');
       final storepassword = prefs.getString('password');
-      if (email == storeemail || passsword == storepassword) {
+      final storeuserName = prefs.getString('userName');
+      if (email == storeemail ||
+          passsword == storepassword ||
+          userName == storeuserName) {
         isLoggedIn.value = true;
         print('After login: isLoggedIn = ${isLoggedIn.value}');
         Get.offAll(() => BottomNaviView());
@@ -117,6 +141,6 @@ class AuthController extends GetxController {
   void logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove(loginkey);
+    Get.offAll(Loginpage());
   }
-
 }

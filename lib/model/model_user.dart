@@ -1,19 +1,19 @@
 class User {
   final String email;
   final String password;
-  // final String userName;
+  final String userName;
 
   User({
     required this.email,
     required this.password,
-    // required this.userName,
+    required this.userName,
   });
 
   Map<String, dynamic> toJson() {
     return {
       'email': email,
       'password': password,
-      // 'userName': userName,
+      'userName': userName,
     };
   }
 
@@ -21,7 +21,7 @@ class User {
     return User(
       email: json['email'],
       password: json['password'],
-      // userName: json['userName'],
+      userName: json['userName'],
     );
   }
 }

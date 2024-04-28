@@ -58,7 +58,7 @@ class _SignupscreenState extends State<Signupscreen> {
                         fontWeight: FontWeight.bold),
                   ),
                   textformNoIcon(
-                    // controller: authController.RUsername,
+                    controller: authController.RUsername,
                     label: "Name",
                   ),
                   const SizedBox(height: 16),
@@ -106,10 +106,10 @@ class _SignupscreenState extends State<Signupscreen> {
                         child: ElevatedButton(
                           onPressed: () {
                             authController.register(
-                              authController.Remail.text,
-                              authController.Rpassword.text,
-                              authController.RcPassword.text,
-                            );
+                                authController.Remail.text,
+                                authController.Rpassword.text,
+                                authController.RcPassword.text,
+                                authController.RUsername.text);
                             // authController.ClearRegister();
                           },
                           style: ElevatedButton.styleFrom(

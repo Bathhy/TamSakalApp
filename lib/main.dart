@@ -4,7 +4,7 @@ import 'package:practiceloginlayout/ViewScreen/detail_faculty.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_major.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_view.dart';
 import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
-import 'package:practiceloginlayout/ViewScreen/profile_ui.dart';
+import 'package:practiceloginlayout/ViewScreen/profileUi/profile_ui.dart';
 import 'package:practiceloginlayout/ViewScreen/splashscreen.dart';
 import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
 import 'package:practiceloginlayout/controller/controller_binding/binding_control.dart';
