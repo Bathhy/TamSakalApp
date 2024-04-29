@@ -2,11 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
+import 'package:practiceloginlayout/component_project/popup_bottomsheet/popup_edit_name.dart';
+import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
-class PersonalAccount extends StatelessWidget {
+class PersonalAccount extends StatefulWidget {
   const PersonalAccount({super.key});
 
+  @override
+  State<PersonalAccount> createState() => _PersonalAccountState();
+}
+
+class _PersonalAccountState extends State<PersonalAccount> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    _authController.getUserInfo();
+    super.initState();
+  }
+
+  final AuthController _authController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,10 +206,12 @@ class PersonalAccount extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          UniText(
-                            label: "Leonard",
-                            fontsize: 25,
-                            fontweight: FontWeight.bold,
+                          Obx(
+                            () => UniText(
+                              label: _authController.Nameuser.value,
+                              fontsize: 25,
+                              fontweight: FontWeight.bold,
+                            ),
                           ),
                           UniText(
                             label: "Cambodia",
@@ -207,7 +224,9 @@ class PersonalAccount extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 70),
                       child: TextButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            await Get.to(PopUpEditUsername(context));
+                          },
                           child: UniText(
                             label: "Edit",
                             color: myBlueColor,
@@ -223,34 +242,4 @@ class PersonalAccount extends StatelessWidget {
       ),
     );
   }
-
-  // Widget _AppbarProf() {
-  //   return Container(
-  //     height: Get.height * 0.14,
-  //     decoration: BoxDecoration(
-  //         shape: BoxShape.rectangle,
-  //         color: myBlueColor,
-  //         borderRadius: BorderRadius.only(
-  //             bottomLeft: Radius.circular(20),
-  //             bottomRight: Radius.circular(20))),
-  //     child: Row(
-  //       children: [
-  //         IconButton(
-  //             onPressed: () {
-  //               Get.back();
-  //             },
-  //             icon: Icon(Icons.arrow_back_ios),
-  //             color: Colors.white),
-  //         Padding(
-  //           padding: const EdgeInsets.only(top: 40, left: 20),
-  //           child: UniText(
-  //               label: "Welcome Sam",
-  //               color: Colors.white,
-  //               fontweight: FontWeight.bold,
-  //               fontsize: 30),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

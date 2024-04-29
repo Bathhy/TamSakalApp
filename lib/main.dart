@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_department.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_faculty.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_major.dart';
-import 'package:practiceloginlayout/ViewScreen/detail_view.dart';
-import 'package:practiceloginlayout/ViewScreen/home_screen.dart';
 import 'package:practiceloginlayout/ViewScreen/profileUi/profile_ui.dart';
 import 'package:practiceloginlayout/ViewScreen/splashscreen.dart';
+import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_view.dart';
 import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
+import 'package:practiceloginlayout/controller/ProfileEditing_Control.dart/binding_profile_control/main_binding_profile.dart';
 import 'package:practiceloginlayout/controller/controller_binding/binding_control.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:get/get.dart';
-import 'package:practiceloginlayout/singup/sign_up.dart';
 
 void main() {
   runApp(const MyWidget());
@@ -33,12 +32,21 @@ class _MyWidgetState extends State<MyWidget> {
       getPages: [
         GetPage(name: '/splash', page: () => Splashscreen()),
         GetPage(name: '/bottom', page: () => BottomNaviView()),
-        GetPage(name: '/Profilview', page: () => ProfileView()),
+        GetPage(
+          name: '/Profilview',
+          page: () => ProfileView(),
+          // binding: ProfileControlBinding(),
+        ),
         GetPage(name: '/DetailMajor', page: () => DetailMajorView()),
         GetPage(name: '/Login', page: () => Loginpage()),
         // GetPage(name: '/Detail', page: () => DetailUniView()),
         GetPage(name: '/DetailFacul', page: () => DetailFacultyView()),
         GetPage(name: '/DetailDepart', page: () => DetailDepartView()),
+        GetPage(
+          name: '/EditingProfile',
+          page: () => PersonalAccount(),
+          // binding: ProfileControlBinding(),
+        ),
       ],
     );
   }

@@ -97,6 +97,7 @@ class AuthController extends GetxController {
         print('After login: isLoggedIn = ${isLoggedIn.value}');
         Get.offAll(() => BottomNaviView());
         prefs.setBool(loginkey, true);
+        getUserInfo();
       } else {
         Get.snackbar("Not found", "Couldn't find account",
             icon: Icon(

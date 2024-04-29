@@ -38,7 +38,7 @@ dependencies:
   shared_preferences: ^2.2.2
   get: ^4.6.6 
   google_fonts: ^6.1.0
-  flutter_slidable: ^3.0.1
+  country_picker: 2.0.23
   flutter_launcher_icons: ^0.13.1
   
 
