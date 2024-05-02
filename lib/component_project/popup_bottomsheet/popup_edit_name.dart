@@ -1,8 +1,12 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practiceloginlayout/component_project/Text_compo.dart';
+import 'package:practiceloginlayout/component_project/app_button_compo.dart';
 import 'package:practiceloginlayout/component_project/textformfield_compo.dart';
 import 'package:practiceloginlayout/controller/ProfileEditing_Control.dart/profil_edit_control.dart';
+import 'package:practiceloginlayout/model/profile_mode.dart';
+import 'package:practiceloginlayout/store_key/storing_key_value.dart';
 
 Future PopUpEditUsername(BuildContext context) {
   final ProfileEditingController _profilcontrol =
@@ -39,6 +43,10 @@ Future PopUpEditUsername(BuildContext context) {
                 SizedBox(
                   height: 20,
                 ),
+                UniText(label: "Enter your Personal Information:"),
+                SizedBox(
+                  height: 20,
+                ),
                 textformNoIcon(
                   label: "Enter your Name",
                   controller: _profilcontrol.UsernameEditing,
@@ -47,8 +55,9 @@ Future PopUpEditUsername(BuildContext context) {
                   height: 20,
                 ),
                 textformNoIcon(
-                  label: "Pick Country",
-                  controller: _profilcontrol.UsernameEditing,
+                  controller: _profilcontrol.SelectCountry,
+                  label: "Pick your Country",
+                  icondata: Icons.search,
                   onpress: () {
                     showCountryPicker(
                         context: context,
@@ -64,9 +73,56 @@ Future PopUpEditUsername(BuildContext context) {
                           ),
                           inputDecoration: InputDecoration(),
                         ),
-                        onSelect: (Country country) {});
+                        onSelect: (Country country) {
+                          _profilcontrol.SelectCountry.text = country.name;
+                          print(
+                              'Select country ==>> ${_profilcontrol.SelectCountry.text}');
+                        });
                   },
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                textformNoIcon(
+                  label: "Enter your Email Address",
+                  controller: _profilcontrol.EmailAddressTextControl,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                textformNoIcon(
+                  label: "Enter your Phone Number",
+                  controller: _profilcontrol.PhoneNumberTextControl,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                textformNoIcon(
+                  label: "Enter your City or Province",
+                  controller: _profilcontrol.CityTextControl,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                textformNoIcon(
+                  label: "Enter your Address",
+                  controller: _profilcontrol.AddressTextControl,
+                ),
+                SizedBox(height: 20),
+                AppButton(
+                  label: "Save Changes",
+                  onTab: () {
+                    _profilcontrol.addCountry(
+                        ProfileModel(
+                            country: _profilcontrol.SelectCountry.text,
+                            Name: _profilcontrol.UsernameEditing.text,
+                            Email: _profilcontrol.EmailAddressTextControl.text,
+                            city: _profilcontrol.CityTextControl.text,
+                            Phonenumber:
+                                _profilcontrol.PhoneNumberTextControl.text,),
+                        UserInfo);
+                  },
+                )
               ],
             ),
           ));

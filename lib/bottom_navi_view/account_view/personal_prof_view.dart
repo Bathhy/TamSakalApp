@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/component_project/popup_bottomsheet/popup_edit_name.dart';
+import 'package:practiceloginlayout/controller/ProfileEditing_Control.dart/profil_edit_control.dart';
 import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
+import 'package:practiceloginlayout/store_key/storing_key_value.dart';
 
 class PersonalAccount extends StatefulWidget {
   const PersonalAccount({super.key});
@@ -17,10 +21,14 @@ class _PersonalAccountState extends State<PersonalAccount> {
   @override
   void initState() {
     // TODO: implement initState
+    _profilcontrol.getProfileUserInfo(UserInfo);
+    print("  _profilcontrol.getProfileUserInfo(UserInfo)");
     _authController.getUserInfo();
     super.initState();
   }
 
+  final ProfileEditingController _profilcontrol =
+      Get.put(ProfileEditingController());
   final AuthController _authController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -51,6 +59,8 @@ class _PersonalAccountState extends State<PersonalAccount> {
   }
 
   Widget _personalinforcard() {
+    final ProfileEditingController _profilcontrol =
+        Get.put(ProfileEditingController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
@@ -75,32 +85,29 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       ),
                       SizedBox(height: 15),
                       UniText(
-                        label: "First Name",
-                        fontsize: 11,
-                        color: Colors.grey,
-                      ),
-                      UniText(
-                        label: "Nov",
-                        fontsize: 15,
-                        fontweight: FontWeight.bold,
-                      ),
-                      SizedBox(height: 15),
-                      UniText(
                         label: "Email Address",
                         fontsize: 11,
                         fontweight: FontWeight.bold,
                         color: Colors.grey,
                       ),
-                      UniText(
-                        label: "iloveyou@gmail.com",
-                        fontsize: 15,
-                        fontweight: FontWeight.bold,
+                      Obx(
+                        () => UniText(
+                          label: _profilcontrol.listinfoUser.first.Email,
+                          fontsize: 15,
+                          fontweight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(height: 25),
                       UniText(
                         label: "Address",
                         fontsize: 15,
                         fontweight: FontWeight.bold,
+                      ),
+                      UniText(
+                        label: "asd",
+                        fontsize: 15,
+                        fontweight: FontWeight.bold,
+                        color: Colors.grey,
                       ),
                       SizedBox(height: 15),
                       UniText(
@@ -109,63 +116,58 @@ class _PersonalAccountState extends State<PersonalAccount> {
                         fontweight: FontWeight.bold,
                         color: Colors.grey,
                       ),
-                      UniText(
-                        label: "Camboja",
-                        fontsize: 15,
-                        fontweight: FontWeight.bold,
+                      Obx(
+                        () => UniText(
+                          label: _profilcontrol.listinfoUser.first.country,
+                          fontsize: 15,
+                          fontweight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      SizedBox(height: 40),
-                      UniText(
-                        label: "Last Name",
-                        fontsize: 11,
-                        color: Colors.grey,
-                      ),
-                      UniText(
-                        label: "Messi",
-                        fontsize: 15,
-                        fontweight: FontWeight.bold,
-                      ),
-                      SizedBox(height: 15),
-                      UniText(
-                        label: "Phone Number",
-                        fontsize: 11,
-                        color: Colors.grey,
-                      ),
-                      UniText(
-                        label: "0238899",
-                        fontsize: 15,
-                        fontweight: FontWeight.bold,
-                      ),
-                      SizedBox(height: 60),
-                      UniText(
-                        label: "City/Province",
-                        fontsize: 15,
-                        color: Colors.grey,
-                      ),
-                      UniText(
-                        label: "Phnom Penh",
-                        fontsize: 15,
-                        fontweight: FontWeight.bold,
-                      ),
-                      SizedBox(
-                        height: 60,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 70),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: UniText(
-                              label: "Edit",
-                              color: myBlueColor,
-                              fontsize: 16,
-                            )),
-                      ),
-                    ],
+                  Obx(
+                    () => Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(height: 40),
+                        UniText(
+                          label: "Phone Number",
+                          fontsize: 11,
+                          color: Colors.grey,
+                        ),
+                        UniText(
+                          label: _profilcontrol.listinfoUser.first.Phonenumber,
+                          fontsize: 15,
+                          fontweight: FontWeight.bold,
+                        ),
+                        SizedBox(height: 60),
+                        UniText(
+                          label: "City/Province",
+                          fontsize: 15,
+                          color: Colors.grey,
+                        ),
+                        UniText(
+                          label: _profilcontrol.listinfoUser.first.city,
+                          fontsize: 15,
+                          fontweight: FontWeight.bold,
+                        ),
+                        SizedBox(
+                          height: 60,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 70),
+                          child: TextButton(
+                              onPressed: () async {
+                                await Get.to(PopUpEditUsername(context));
+                              },
+                              child: UniText(
+                                label: "Edit",
+                                color: myBlueColor,
+                                fontsize: 16,
+                              )),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -177,6 +179,8 @@ class _PersonalAccountState extends State<PersonalAccount> {
   }
 
   Widget _profileNamecard() {
+    final ProfileEditingController _profilecontrol =
+        Get.put(ProfileEditingController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -203,35 +207,23 @@ class _PersonalAccountState extends State<PersonalAccount> {
                     SizedBox(width: 20),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Obx(
-                            () => UniText(
+                      child: Obx(
+                        () => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            UniText(
                               label: _authController.Nameuser.value,
                               fontsize: 25,
                               fontweight: FontWeight.bold,
                             ),
-                          ),
-                          UniText(
-                            label: "Cambodia",
-                            fontsize: 18,
-                            color: Colors.grey,
-                          ),
-                        ],
+                            UniText(
+                              label: _profilecontrol.listinfoUser.first.country,
+                              fontsize: 18,
+                              color: Colors.grey,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 70),
-                      child: TextButton(
-                          onPressed: () async {
-                            await Get.to(PopUpEditUsername(context));
-                          },
-                          child: UniText(
-                            label: "Edit",
-                            color: myBlueColor,
-                            fontsize: 16,
-                          )),
                     ),
                   ],
                 ),

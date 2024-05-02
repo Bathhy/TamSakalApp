@@ -1,4 +1,5 @@
 import 'package:practiceloginlayout/RepoUni/repo_uni.dart';
+import 'package:practiceloginlayout/model/profile_mode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
@@ -44,5 +45,44 @@ class TamsakalDB {
     final alluni = await getFav();
     alluni.removeWhere((element) => element.nameUni == unidel.nameUni);
     return savedataFav(alluni);
+  }
+
+  Future<bool> setString(String key, String value) async {
+    final prefs = await _getSharePref();
+    return prefs.setString(key, value);
+  }
+
+  Future<String?> getString(String key) async {
+    final prefs = await _getSharePref();
+    return prefs.getString(key);
+  }
+
+  Future<bool> settingList(ProfileModel listProfile, String key) async {
+    final listprofil = await gettingList(key);
+    final isExist =
+        listprofil.indexWhere((e) => e.Phonenumber == listProfile.Phonenumber);
+    if (isExist == -1) {
+      listprofil.add(listProfile);
+      return await putListProfile(listprofil, key);
+    }
+    return false;
+  }
+
+  Future<bool> putListProfile(
+      List<ProfileModel> listProfile1, String key) async {
+    final pref = await _getSharePref();
+    final List<String> items =
+        listProfile1.map((e) => jsonEncode(e.toJson())).toList();
+
+    return pref.setStringList(key, items);
+  }
+
+  Future<List<ProfileModel>> gettingList(String key) async {
+    final pref = await _getSharePref();
+    final profileitems = pref.getStringList(key);
+    return profileitems
+            ?.map((e) => ProfileModel.fromJson(jsonDecode(e)))
+            .toList() ??
+        [];
   }
 }
