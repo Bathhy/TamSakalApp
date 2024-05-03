@@ -85,4 +85,28 @@ class TamsakalDB {
             .toList() ??
         [];
   }
+
+  Future<bool> setSearch(RepoUni nameuni1, String key) async {
+    final listuni = await getSearch(key);
+    final isExist = listuni.indexWhere((e) => e.nameUni == nameuni1.nameUni);
+    if (isExist == -1) {
+      listuni.add(nameuni1);
+      return await putSearch(listuni, key);
+    }
+    return false;
+  }
+
+  Future<bool> putSearch(List<RepoUni> listProfile1, String key) async {
+    final pref = await _getSharePref();
+    final List<String> items =
+        listProfile1.map((e) => jsonEncode(e.toJson())).toList();
+
+    return pref.setStringList(key, items);
+  }
+
+  Future<List<RepoUni>> getSearch(String key) async {
+    final pref = await _getSharePref();
+    final nameitem = pref.getStringList(key);
+    return nameitem?.map((e) => RepoUni.fromJson(jsonDecode(e))).toList() ?? [];
+  }
 }

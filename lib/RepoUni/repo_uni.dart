@@ -42,6 +42,17 @@ class RepoUni {
       'unifaculty': this.unifac,
     };
   }
+    Map<String, dynamic> toJson() {
+    return {
+      'img': this.imgUni,
+      'name': this.nameUni,
+      'Categoryimg': this.CateImage,
+      'overview': this.Overview,
+      'Unicate': this.UniCateImg,
+      'price': this.Price,
+      'unifaculty': this.unifac,
+    };
+  }
 
   factory RepoUni.fromJson(Map<String, dynamic> json) {
     return RepoUni(

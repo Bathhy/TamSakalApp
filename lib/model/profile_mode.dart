@@ -3,7 +3,7 @@ class ProfileModel {
   String country;
   String Email;
   String city;
-  // String Address;
+  String Address;
   String Phonenumber;
 
   ProfileModel({
@@ -11,7 +11,7 @@ class ProfileModel {
     required this.Name,
     required this.Email,
     required this.city,
-    // required this.Address,
+    required this.Address,
     required this.Phonenumber,
   });
 
@@ -20,7 +20,7 @@ class ProfileModel {
         Name: json["Name"],
         Email: json["Email"],
         city: json["city"],
-        // Address: json["address"],
+        Address: json["address"],
         Phonenumber: json["Phonenumber"],
       );
 
@@ -29,7 +29,7 @@ class ProfileModel {
         "Name": Name,
         "Email": Email,
         "city": city,
-        // "address": Address,
+        "address": Address,
         "Phonenumber": Phonenumber,
       };
 }

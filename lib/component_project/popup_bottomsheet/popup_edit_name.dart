@@ -112,14 +112,16 @@ Future PopUpEditUsername(BuildContext context) {
                 AppButton(
                   label: "Save Changes",
                   onTab: () {
-                    _profilcontrol.addCountry(
+                    _profilcontrol.EditUserInfo(
                         ProfileModel(
-                            country: _profilcontrol.SelectCountry.text,
-                            Name: _profilcontrol.UsernameEditing.text,
-                            Email: _profilcontrol.EmailAddressTextControl.text,
-                            city: _profilcontrol.CityTextControl.text,
-                            Phonenumber:
-                                _profilcontrol.PhoneNumberTextControl.text,),
+                          country: _profilcontrol.SelectCountry.text,
+                          Name: _profilcontrol.UsernameEditing.text,
+                          Email: _profilcontrol.EmailAddressTextControl.text,
+                          city: _profilcontrol.CityTextControl.text,
+                          Phonenumber:
+                              _profilcontrol.PhoneNumberTextControl.text,
+                          Address: _profilcontrol.AddressTextControl.text,
+                        ),
                         UserInfo);
                   },
                 )

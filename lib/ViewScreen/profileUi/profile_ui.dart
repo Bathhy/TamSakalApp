@@ -16,6 +16,7 @@ class ProfileView extends StatefulWidget {
 
 class _ProfileViewState extends State<ProfileView> {
   final AuthController authcontrol = Get.put(AuthController());
+
   @override
   void initState() {
     authcontrol.getUserInfo();

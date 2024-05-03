@@ -4,6 +4,7 @@ import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/component_project/component_profil.dart';
+import 'package:practiceloginlayout/controller/ProfileEditing_Control.dart/profil_edit_control.dart';
 import 'package:practiceloginlayout/controller/login_controller.dart';
 import 'package:practiceloginlayout/splashscreen/declareimage.dart';
 
@@ -15,6 +16,8 @@ class body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthController _acccontrol = Get.put(AuthController());
+    final ProfileEditingController _profilecontroll =
+        Get.put(ProfileEditingController());
     return Column(
       children: [
         Container(
@@ -31,7 +34,8 @@ class body extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 40, left: 20),
                 child: Obx(
                   () => UniText(
-                      label: "Welcome ${_acccontrol.Nameuser.value}",
+                      label:
+                          "Welcome ${_profilecontroll.listinfoUser.isNotEmpty ? _profilecontroll.listinfoUser.first.Name : _acccontrol.Nameuser.value}",
                       color: colorGold,
                       fontweight: FontWeight.bold,
                       fontsize: 30),
@@ -76,7 +80,9 @@ class body extends StatelessWidget {
           children: [
             Obx(
               () => UniText(
-                label: _acccontrol.Nameuser.value,
+                label: _profilecontroll.listinfoUser.isNotEmpty
+                    ? _profilecontroll.listinfoUser.first.Name
+                    : _acccontrol.Nameuser.value,
                 fontsize: 20,
                 fontweight: FontWeight.bold,
               ),
@@ -92,7 +98,9 @@ class body extends StatelessWidget {
                 children: [
                   Obx(
                     () => UniText(
-                        label: _acccontrol.emailuser.value,
+                        label: _profilecontroll.listinfoUser.isNotEmpty
+                            ? _profilecontroll.listinfoUser.first.Email
+                            : _acccontrol.emailuser.value,
                         color: Colors.black,
                         fontsize: 18),
                   ),
@@ -134,7 +142,10 @@ class body extends StatelessWidget {
                   iconbutton: Icons.arrow_forward_ios,
                   iconbuttoncolor: Colors.red,
                   iconcolor: Colors.red,
-                  onpress: () => _acccontrol.logout()),
+                  onpress: () {
+                    _acccontrol.logout();
+                    _profilecontroll.ClearLocalProfille();
+                  }),
             ],
           ),
         ),

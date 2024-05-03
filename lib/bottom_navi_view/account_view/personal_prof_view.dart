@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/state_manager.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/component_project/popup_bottomsheet/popup_edit_name.dart';
@@ -18,18 +19,17 @@ class PersonalAccount extends StatefulWidget {
 }
 
 class _PersonalAccountState extends State<PersonalAccount> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    _profilcontrol.getProfileUserInfo(UserInfo);
-    print("  _profilcontrol.getProfileUserInfo(UserInfo)");
-    _authController.getUserInfo();
-    super.initState();
-  }
-
   final ProfileEditingController _profilcontrol =
       Get.put(ProfileEditingController());
   final AuthController _authController = Get.find();
+  // @override
+  // void initState() {
+  //   _profilcontrol.getProfileUserInfo(UserInfo);
+  //   print("  ${_profilcontrol.listinfoUser.first.Phonenumber}");
+  //   _authController.getUserInfo();
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,12 +48,20 @@ class _PersonalAccountState extends State<PersonalAccount> {
             icon: Icon(Icons.arrow_back_ios),
             color: Colors.white),
       ),
-      body: Column(
-        children: [
-          _profileNamecard(),
-          SizedBox(height: 20),
-          _personalinforcard()
-        ],
+      body: Obx(
+        () => RefreshIndicator(
+          onRefresh: () async {
+            await Future.delayed(Duration(seconds: 1));
+            _profilcontrol.getProfileUserInfo(UserInfo);
+          },
+          child: ListView(
+            children: [
+              _profileNamecard(),
+              SizedBox(height: 20),
+              _personalinforcard()
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -92,7 +100,10 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       ),
                       Obx(
                         () => UniText(
-                          label: _profilcontrol.listinfoUser.first.Email,
+                          label: _profilcontrol.listinfoUser.isNotEmpty
+                              ? (_profilcontrol.listinfoUser.first.Email ??
+                                  _authController.emailuser.value)
+                              : _authController.emailuser.value,
                           fontsize: 15,
                           fontweight: FontWeight.bold,
                         ),
@@ -103,11 +114,15 @@ class _PersonalAccountState extends State<PersonalAccount> {
                         fontsize: 15,
                         fontweight: FontWeight.bold,
                       ),
-                      UniText(
-                        label: "asd",
-                        fontsize: 15,
-                        fontweight: FontWeight.bold,
-                        color: Colors.grey,
+                      Obx(
+                        () => UniText(
+                          label: _profilcontrol.listinfoUser.isNotEmpty
+                              ? _profilcontrol.listinfoUser.first.Address ??
+                                  "No Country Select"
+                              : "No Address information",
+                          fontsize: 15,
+                          fontweight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(height: 15),
                       UniText(
@@ -118,56 +133,67 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       ),
                       Obx(
                         () => UniText(
-                          label: _profilcontrol.listinfoUser.first.country,
+                          label: _profilcontrol.listinfoUser.isNotEmpty
+                              ? _profilcontrol.listinfoUser.first.country ??
+                                  "No Country Select"
+                              : "No Country Select",
                           fontsize: 15,
                           fontweight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
-                  Obx(
-                    () => Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        SizedBox(height: 40),
-                        UniText(
-                          label: "Phone Number",
-                          fontsize: 11,
-                          color: Colors.grey,
-                        ),
-                        UniText(
-                          label: _profilcontrol.listinfoUser.first.Phonenumber,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SizedBox(height: 40),
+                      UniText(
+                        label: "Phone Number",
+                        fontsize: 11,
+                        color: Colors.grey,
+                      ),
+                      Obx(
+                        () => UniText(
+                          label: _profilcontrol.listinfoUser.isNotEmpty
+                              ? _profilcontrol.listinfoUser.first.Phonenumber ??
+                                  "No Phone number "
+                              : "No Phone number ",
                           fontsize: 15,
                           fontweight: FontWeight.bold,
                         ),
-                        SizedBox(height: 60),
-                        UniText(
-                          label: "City/Province",
-                          fontsize: 15,
-                          color: Colors.grey,
-                        ),
-                        UniText(
-                          label: _profilcontrol.listinfoUser.first.city,
+                      ),
+                      SizedBox(height: 75),
+                      UniText(
+                        label: "City/Province",
+                        fontsize: 15,
+                        color: Colors.grey,
+                      ),
+                      Obx(
+                        () => UniText(
+                          label: _profilcontrol.listinfoUser.isNotEmpty
+                              ? _profilcontrol.listinfoUser.first.city ??
+                                  "No City information"
+                              : "No City information",
                           fontsize: 15,
                           fontweight: FontWeight.bold,
                         ),
-                        SizedBox(
-                          height: 60,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 70),
-                          child: TextButton(
-                              onPressed: () async {
-                                await Get.to(PopUpEditUsername(context));
-                              },
-                              child: UniText(
-                                label: "Edit",
-                                color: myBlueColor,
-                                fontsize: 16,
-                              )),
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: 60,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: TextButton(
+                            onPressed: () async {
+                              await Get.to(PopUpEditUsername(context));
+                            },
+                            child: UniText(
+                              label: "Edit",
+                              color: myBlueColor,
+                              fontsize: 16,
+                            )),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -207,22 +233,26 @@ class _PersonalAccountState extends State<PersonalAccount> {
                     SizedBox(width: 20),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
-                      child: Obx(
-                        () => Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            UniText(
-                              label: _authController.Nameuser.value,
-                              fontsize: 25,
-                              fontweight: FontWeight.bold,
-                            ),
-                            UniText(
-                              label: _profilecontrol.listinfoUser.first.country,
-                              fontsize: 18,
-                              color: Colors.grey,
-                            ),
-                          ],
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          UniText(
+                            label: _profilcontrol.listinfoUser.isNotEmpty
+                                ? (_profilcontrol.listinfoUser.first.Name ??
+                                    _authController.Nameuser.value)
+                                : _authController.Nameuser.value,
+                            fontsize: 25,
+                            fontweight: FontWeight.bold,
+                          ),
+                          UniText(
+                            label: _profilecontrol.listinfoUser.isNotEmpty
+                                ? _profilecontrol.listinfoUser.first.country ??
+                                    "No Country Select"
+                                : "No Country Select",
+                            fontsize: 18,
+                            color: Colors.grey,
+                          ),
+                        ],
                       ),
                     ),
                   ],

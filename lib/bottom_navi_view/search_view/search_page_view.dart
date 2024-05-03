@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_view.dart';
+import 'package:practiceloginlayout/bottom_navi_view/search_view/search_history_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
 import 'package:practiceloginlayout/component_project/Text_compo.dart';
 import 'package:practiceloginlayout/controller/search_control.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:practiceloginlayout/store_key/storing_key_value.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({
@@ -20,6 +21,7 @@ class _SearchPageState extends State<SearchPage> {
   final SearchingController _searchcontrol = Get.find();
   void initState() {
     _searchcontrol.search("");
+    _searchcontrol.getSearchHistory(KeyNameuni);
     super.initState();
   }
 
@@ -33,32 +35,33 @@ class _SearchPageState extends State<SearchPage> {
           SizedBox(height: 5),
           Obx(
             () => _searchcontrol.dataList.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.search_rounded,
-                          size: 150,
-                          color: colorGold,
-                        ),
-                        Text(
-                          'Search not Found',
-                          style: GoogleFonts.nunito(
-                              color: colorGold,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                        Text(
-                          'Try searching the item with \n a different keyword.',
-                          style: GoogleFonts.nunito(
-                              color: colorGold,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  )
+                // ? Center(
+                //     child: Column(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         Icon(
+                //           Icons.search_rounded,
+                //           size: 150,
+                //           color: colorGold,
+                //         ),
+                //         Text(
+                //           'Search not Found',
+                //           style: GoogleFonts.nunito(
+                //               color: colorGold,
+                //               fontWeight: FontWeight.bold,
+                //               fontSize: 20),
+                //         ),
+                //         Text(
+                //           'Try searching the item with \n a different keyword.',
+                //           style: GoogleFonts.nunito(
+                //               color: colorGold,
+                //               fontWeight: FontWeight.bold,
+                //               fontSize: 15),
+                //         ),
+                //       ],
+                //     ),
+                //   )
+                ? SearchHistoryView()
                 : _DisplayUni(),
           ),
         ],

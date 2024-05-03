@@ -6,7 +6,6 @@ import 'package:practiceloginlayout/ViewScreen/profileUi/profile_ui.dart';
 import 'package:practiceloginlayout/ViewScreen/splashscreen.dart';
 import 'package:practiceloginlayout/bottom_navi_view/account_view/personal_prof_view.dart';
 import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
-import 'package:practiceloginlayout/controller/ProfileEditing_Control.dart/binding_profile_control/main_binding_profile.dart';
 import 'package:practiceloginlayout/controller/controller_binding/binding_control.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:get/get.dart';
