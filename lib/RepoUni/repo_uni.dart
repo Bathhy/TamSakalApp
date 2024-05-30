@@ -18,7 +18,7 @@ class RepoUni {
     required String CateImage,
     required String Overview,
     required String Price,
-    List<String>? unifac,
+    required List<String> unifac,
     // List<String>? unidepart,
   }) {
     this.imgUni = imgUni;
@@ -42,7 +42,8 @@ class RepoUni {
       'unifaculty': this.unifac,
     };
   }
-    Map<String, dynamic> toJson() {
+
+  Map<String, dynamic> toJson() {
     return {
       'img': this.imgUni,
       'name': this.nameUni,

@@ -143,8 +143,45 @@ class body extends StatelessWidget {
                   iconbuttoncolor: Colors.red,
                   iconcolor: Colors.red,
                   onpress: () {
-                    _acccontrol.logout();
-                    _profilecontroll.ClearLocalProfille();
+                    Get.defaultDialog(
+                        content: UniText(
+                          label: "Are you sure you want to Log out?",
+                          color: Colors.white,
+                        ),
+                        backgroundColor: myBlueColor,
+                        title: "",
+                        actions: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                onPressed: () {
+                                  Get.back();
+                                },
+                              ),
+                              TextButton(
+                                child: const Text(
+                                  "Log out",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                onPressed: () {
+                                  _acccontrol.logout();
+                                  _profilecontroll.ClearLocalProfille();
+                                },
+                              ),
+                            ],
+                          )
+                        ]);
                   }),
             ],
           ),

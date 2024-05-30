@@ -21,7 +21,6 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   final PageviewController _pageview = Get.find();
   // final HomeController _homecontroller = Get.find();
-
   @override
   void initState() {
     _pageview.getItemList();
@@ -31,7 +30,7 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
-    int _activepage = 0;
+    // int _activepage = 0;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -75,94 +74,102 @@ class _HomescreenState extends State<Homescreen> {
         iconTheme: IconThemeData(color: Colors.white),
       ),
       drawer: drawerMeth(),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        children: [
-          SizedBox(height: 15),
-          _pageviewMeth(),
-          SizedBox(height: 15),
-          UniText(
-            label:
-                "Tam Sakal is a App for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",
-            color: Colors.black,
-            fontsize: 20,
-            fontweight: FontWeight.bold,
-          ),
-          SizedBox(height: 15),
-          UniText(
-            label: "Here is the most popular Degree in Cambodia",
-            fontsize: 15,
-            fontweight: FontWeight.bold,
-            color: myBlueColor,
-          ),
-          SizedBox(height: 15),
-          InkWell(
-            onTap: () {
-              Get.to(CategoryDetailview());
-            },
-            child: GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 19,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.9,
-              ),
-              itemCount: _pageview.CategoryUniList.length,
-              itemBuilder: (context, index) {
-                final cate = _pageview.CategoryUniList[index];
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 233, 233, 240),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Container(
-                    child: LayoutBuilder(
-                      builder: (context, constraint) {
-                        return Container(
-                          child: Stack(
-                            children: [
-                              Image.asset(
-                                cate.imgCateuni,
-                                fit: BoxFit.fill,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 160,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      cate.CateUniname,
-                                      style: GoogleFonts.openSans(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 11,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                );
-              },
+      body: RefreshIndicator(
+        color: myBlueColor,
+        onRefresh: () async {
+          Future.delayed(Duration(seconds: 1));
+          _pageview.getItemList();
+          _pageview.getCategory();
+        },
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          children: [
+            SizedBox(height: 15),
+            _pageviewMeth(),
+            SizedBox(height: 15),
+            UniText(
+              label:
+                  "Tam Sakal is a App for students who have just graduated from the 12th grade and want to find a university or information about university majors to continue their studies.",
+              color: Colors.black,
+              fontsize: 20,
+              fontweight: FontWeight.bold,
             ),
-          ),
-        ],
+            SizedBox(height: 15),
+            UniText(
+              label: "Here is the most popular Degree in Cambodia",
+              fontsize: 15,
+              fontweight: FontWeight.bold,
+              color: myBlueColor,
+            ),
+            SizedBox(height: 15),
+            InkWell(
+              onTap: () {
+                Get.to(CategoryDetailview());
+              },
+              child: GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 19,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.9,
+                ),
+                itemCount: _pageview.CategoryUniList.length,
+                itemBuilder: (context, index) {
+                  final cate = _pageview.CategoryUniList[index];
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color.fromARGB(255, 233, 233, 240),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Container(
+                      child: LayoutBuilder(
+                        builder: (context, constraint) {
+                          return Container(
+                            child: Stack(
+                              children: [
+                                Image.asset(
+                                  cate.imgCateuni,
+                                  fit: BoxFit.fill,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 160,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        cate.CateUniname,
+                                        style: GoogleFonts.openSans(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

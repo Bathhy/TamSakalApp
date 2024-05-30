@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practiceloginlayout/bottom_navi_view/bottom_navi_viewscreen.dart';
+import 'package:practiceloginlayout/controller/bottom_control.dart';
 import 'package:practiceloginlayout/login/loginpage.dart';
 import 'package:practiceloginlayout/model/model_user.dart';
 import 'package:practiceloginlayout/store_key/storing_key_value.dart';
@@ -94,7 +95,6 @@ class AuthController extends GetxController {
           passsword == storepassword ||
           userName == storeuserName) {
         isLoggedIn.value = true;
-        print('After login: isLoggedIn = ${isLoggedIn.value}');
         Get.offAll(() => BottomNaviView());
         prefs.setBool(loginkey, true);
         getUserInfo();
@@ -141,6 +141,9 @@ class AuthController extends GetxController {
 
   void logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    BottomNaviController bottomNaviController = Get.find();
+    bottomNaviController.currentInd.value = 0;
+    prefs.setBool(loginkey, false);
     prefs.remove(loginkey);
     Get.offAll(Loginpage());
   }

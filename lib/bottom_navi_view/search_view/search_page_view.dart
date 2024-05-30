@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:practiceloginlayout/ViewScreen/detail_view.dart';
 import 'package:practiceloginlayout/bottom_navi_view/search_view/search_history_view.dart';
 import 'package:practiceloginlayout/colo_const/color_const.dart';
@@ -35,33 +36,33 @@ class _SearchPageState extends State<SearchPage> {
           SizedBox(height: 5),
           Obx(
             () => _searchcontrol.dataList.isEmpty
-                // ? Center(
-                //     child: Column(
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         Icon(
-                //           Icons.search_rounded,
-                //           size: 150,
-                //           color: colorGold,
-                //         ),
-                //         Text(
-                //           'Search not Found',
-                //           style: GoogleFonts.nunito(
-                //               color: colorGold,
-                //               fontWeight: FontWeight.bold,
-                //               fontSize: 20),
-                //         ),
-                //         Text(
-                //           'Try searching the item with \n a different keyword.',
-                //           style: GoogleFonts.nunito(
-                //               color: colorGold,
-                //               fontWeight: FontWeight.bold,
-                //               fontSize: 15),
-                //         ),
-                //       ],
-                //     ),
-                //   )
-                ? SearchHistoryView()
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.search_rounded,
+                          size: 150,
+                          color: colorGold,
+                        ),
+                        Text(
+                          'Search not Found',
+                          style: GoogleFonts.nunito(
+                              color: colorGold,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                        ),
+                        Text(
+                          'Try searching the item with \n a different keyword.',
+                          style: GoogleFonts.nunito(
+                              color: colorGold,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  )
+                // ? SearchHistoryView()
                 : _DisplayUni(),
           ),
         ],
@@ -139,7 +140,7 @@ class _SearchPageState extends State<SearchPage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
-                              image: AssetImage(SearchUni.imgUni),
+                              image: AssetImage(SearchUni.imgUni!),
                               fit: BoxFit.cover)),
                     ),
                     UniText(
@@ -165,7 +166,7 @@ class _SearchPageState extends State<SearchPage> {
                               Icons.monetization_on_outlined,
                               color: Colors.black,
                             ),
-                            UniText(label: SearchUni.Price),
+                            UniText(label: SearchUni.Price!),
                           ],
                         ),
                         SizedBox(width: 5),

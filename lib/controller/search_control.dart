@@ -10,6 +10,12 @@ class SearchingController extends GetxController {
   final saveUniname = TamsakalDB.instance;
 
   RxList<RepoUni> get dataList => unilist;
+  @override
+  void onInit() {
+    getSearchHistory(KeyNameuni);
+    search("");
+    super.onInit();
+  }
 
   void search(String title) async {
     final tmpList = RepoUni.repouniver
@@ -17,9 +23,6 @@ class SearchingController extends GetxController {
             element.nameUni.toLowerCase().contains(title.toLowerCase()))
         .toList();
     unilist.assignAll(tmpList);
-    for (var uni in tmpList) {
-      await saveUniname.setSearch(uni, KeyNameuni);
-    }
   }
 
   void getSearchHistory(String key) async {
@@ -34,10 +37,8 @@ class SearchingController extends GetxController {
     }
   }
 
-  @override
-  void onInit() {
-    getSearchHistory(KeyNameuni);
-    search("");
-    super.onInit();
-  }
+  // void saveSearchQuery(String query) async {
+  //   searchhistorylist.add(RepoUni(nameUni: query));
+  //   saveUniname.setSearchHistory(searchhistorylist);
+  // }
 }

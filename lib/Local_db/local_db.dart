@@ -109,4 +109,12 @@ class TamsakalDB {
     final nameitem = pref.getStringList(key);
     return nameitem?.map((e) => RepoUni.fromJson(jsonDecode(e))).toList() ?? [];
   }
+
+  void setSearchHistory(List<RepoUni> searchHistoryList) async {
+    List<String> searchHistoryStrings =
+        searchHistoryList.map((e) => e.nameUni).toList();
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('search_history', searchHistoryStrings);
+  }
 }
